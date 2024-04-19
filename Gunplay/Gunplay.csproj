@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="main.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTK" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gunplay.BLL\Gunplay.BLL.csproj" />
+    <ProjectReference Include="..\Gunplay.Domain\Gunplay.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="main.gif" />
+  </ItemGroup>
+
+</Project>

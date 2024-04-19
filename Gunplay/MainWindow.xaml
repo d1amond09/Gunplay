@@ -1,0 +1,21 @@
+﻿<Window x:Class="Gunplay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gunplay"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/main.gif"/>
+        </Grid.Background>
+        <Label Content="Перестрелка" HorizontalAlignment="Center" Margin="0,9,0,0" VerticalAlignment="Top" FontSize="72" FontFamily="Bahnschrift SemiBold Condensed"/>
+        <Button Content="Играть" HorizontalAlignment="Center" Margin="0,0,0,124" VerticalAlignment="Center" Height="51" Width="314" Click="PlayButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFFBB83A"/>
+        <Button Content="Настройки" HorizontalAlignment="Center" VerticalAlignment="Center" Height="51" Width="314" Click="SettingsButton_Click" FontSize="36" RenderTransformOrigin="0.513,1.02" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D"/>
+        <Button Content="Выйти" HorizontalAlignment="Center" Margin="0,124,0,0" VerticalAlignment="Center" Height="51" Width="314" Click="CloseButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D"/>
+       
+        <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden"></Frame>
+    </Grid>
+</Window>

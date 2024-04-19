@@ -1,0 +1,20 @@
+﻿<Page x:Class="Gunplay.View.StartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Gunplay.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="1400" d:DesignWidth="2000"
+      Title="StartPage">
+
+    <Grid Background="#FFF3A845" Margin="0,0,0,0">
+        <Rectangle HorizontalAlignment="Center" Height="1653" Stroke="Black" VerticalAlignment="Center" Width="4" Fill="Black"/>
+        <Label Content="Бронебойность" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
+        <Label Content="Скорость Перезарядки" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
+        <Button x:Name="startButton" Content="Начать" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="51" Width="152" Click="StartButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black"/>
+        <Button x:Name="cancelButton" Content="Отмена" BorderThickness="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="152" Click="CancelButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black" Margin="20,0,0,20"/>
+        <Label Content="Бронебойность" HorizontalAlignment="Right" Margin="0,96,548,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
+        <Label Content="Скорость Перезарядки" HorizontalAlignment="Right" Margin="0,156,439,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
+    </Grid>
+</Page>
