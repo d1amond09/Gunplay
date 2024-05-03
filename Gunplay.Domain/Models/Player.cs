@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Gunplay.Domain.Buffers;
 using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
+using OpenTK.Graphics.OpenGL;
 
 namespace Gunplay.Domain.Models
 {
@@ -17,19 +18,24 @@ namespace Gunplay.Domain.Models
 		private const float _speedX = 2.2f;
 		private const float _speedY = 6.3f;
 		private float _direction = 0f;
+
+		private readonly Texture _textureMidHealth;
+		private readonly Texture _textureLowHealth;
 		public float Time { get; set; }
 
 		public Weapon Canoon { get; set; }
 
 		public Chassis Chassis { get; set; }
 
-		public int Health { get; set; }
+		public float Health { get; set; }
 
 		public bool IsAlive => Health > 0;
 		public bool IsDead => !IsAlive;
 
-        public Player(Weapon canoon, Chassis chassis)
+        public Player(Weapon canoon, Chassis chassis, Texture textureMidHealth, Texture textureLowHealth)
 		{
+			_textureMidHealth = textureMidHealth;
+			_textureLowHealth = textureLowHealth;
 			Canoon = canoon;
 			Chassis = chassis;
 			Health = 3;
@@ -59,6 +65,20 @@ namespace Gunplay.Domain.Models
 			{
 				Chassis.Move(_speed * time);
 				Canoon.Move(_speed * time);
+			}
+		}
+
+		public void ChangeTexture()
+		{
+			ElementBuffer rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
+
+			if(Health < 2)
+			{
+				Chassis.ArrayObject = new ArrayObject(Chassis.ArrayBuffer, rctngl, _textureLowHealth);
+			}
+			else if(Health < 3)
+			{
+				Chassis.ArrayObject = new ArrayObject(Chassis.ArrayBuffer, rctngl, _textureMidHealth);
 			}
 		}
 

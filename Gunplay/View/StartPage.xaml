@@ -17,8 +17,12 @@
                 <ColumnDefinition Width="540*"/>
                 <ColumnDefinition Width="540*"/>
             </Grid.ColumnDefinitions>
-
-            <Grid Margin="20,20,20,20" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="0 : 0" FontSize="120" HorizontalAlignment="Center" Style="{StaticResource label}"/>
+            <Grid Grid.Row="1" Margin="20,20,20,20" Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
@@ -39,8 +43,8 @@
                 <Label Grid.Row="2" Grid.Column="0" Content="Скорость Перезарядки:" Style="{StaticResource label}"/>
                 <Label Grid.Row="3" Grid.Column="0" Content="Тип снаряда:" Style="{StaticResource label}"/>
 
-                <Image Grid.Row="3" Grid.Column="2" Source="/View/Images/basicShell.png" />
-                <Label Grid.Row="3" Grid.Column="2" Margin="0 0 0 -25" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="32" Content="Обычный" Style="{StaticResource label}" />
+                <Image x:Name="leftShell" Grid.Row="3" Grid.Column="2" Source="/View/Images/freezeShell.png" />
+                <Label x:Name="labelLeftShell" Grid.Row="3" Grid.Column="2" Margin="0 0 0 -25" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="32" Content="Обычный" Style="{StaticResource label}" />
 
 
                 <Label Grid.Row="0" Grid.Column="2" x:Name="pointsLeftLabel" Content="0" Style="{StaticResource label}" HorizontalAlignment="Center"/>
@@ -78,11 +82,26 @@
                 </Button>
                 
                 <Button Grid.Row="4" x:Name="cancelButton" Content="Отмена" BorderThickness="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="152" Click="CancelButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black" Margin="20,0,0,20"/>
+                <Button Grid.Row="3" Grid.Column="3" x:Name="addTypeLeftButton" Style="{StaticResource triangleButton}" Click="AddTypeLeftButton_Click" >
+                    <Polygon Points="0, 40, 0, 0, 40, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+                <Button Grid.Row="3" Grid.Column="1" x:Name="removeTypeLeftButton" Style="{StaticResource triangleButton}" Click="RemoveTypeLeftButton_Click" Margin="20,0,0,0">
+                    <Polygon Points="40, 0, 40, 40, 0, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+
             </Grid>
 
 
 
-            <Grid Margin="20,20,20,20" Grid.Column="1" >
+            <Grid Margin="20,20,20,20" Grid.Column="1" Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>

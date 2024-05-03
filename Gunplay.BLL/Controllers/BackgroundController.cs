@@ -10,14 +10,14 @@ namespace Gunplay.BLL.Controllers;
 
 public class BackgroundController
 {
-	private readonly IBaseRepository<Background> _backgroundRepository;
+	private readonly IFactory<Background> _backgroundFactory;
 
 	public Background Background { get; private set; }
 
-	public BackgroundController(IBaseRepository<Background> backgroundRepository)
+	public BackgroundController(IFactory<Background> backgroundFactory)
     {
-        _backgroundRepository = backgroundRepository;
-		Background = _backgroundRepository.Get();
+		_backgroundFactory = backgroundFactory;
+		Background = _backgroundFactory.Create();
     }
 
 	public void Draw(int textureIndex)

@@ -5,6 +5,11 @@ public class FastShell : BasicShell
 	public float Speed { get; set; }
 	public FastShell(Rectangle rectangle, string textureFilePath) : base(rectangle, textureFilePath)
 	{
-		Speed = 1.1f;
+		Speed = 1.6f;
+	}
+
+	public override void Fly(float time)
+	{
+		base.Fly(time * Speed);
 	}
 }

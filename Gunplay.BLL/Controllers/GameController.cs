@@ -27,7 +27,8 @@ public class GameController
 	private readonly Polygon Stone;
     public GameObjectList<GameObject> GameList { get; set; }
 
-    public GameController(BackgroundController backgroundController, PlayerController playerLeftController, PlayerController playerRightController)
+    public GameController(BackgroundController backgroundController, PlayerController playerLeftController, 
+						  PlayerController playerRightController)
     {
 		_backgroundController = backgroundController;
 		Background background = _backgroundController.Background;
@@ -40,10 +41,10 @@ public class GameController
 		Player PlayerRight = _playerRightController.Player;
 		PlayerRight.Canoon.Rotate(-0.5f);
 
-		Stone = new Polygon(new(-0.30f, -1f), new(-0.21f, -0.68f), 
+		Stone = new Polygon(new(-0.30f, -1.00f), new(-0.21f, -0.68f), 
 							new(-0.08f, -0.25f), new(-0.08f, -0.25f), 
-							new(0.03f, -0.40f), new(0.1f, -0.48f), 
-							new(0.26f, -0.99f));
+							new( 0.03f, -0.40f), new( 0.10f, -0.48f), 
+							new( 0.26f, -0.99f));
 
 		List<GameObject> gameList = [];
 		gameList.Add(background);
@@ -63,10 +64,11 @@ public class GameController
 		_playerRightController.TouchWithStone(Stone);
 
 		if(_playerRightController.HitTo(_playerLeftController.Player))
+			GameList.Add(_playerLeftController.Player.Chassis);
+		if(_playerLeftController.HitTo(_playerRightController.Player))
 			GameList.Add(_playerRightController.Player.Chassis);
-		_playerLeftController.HitTo(_playerRightController.Player);
 
-		if(_playerRightController.Player.IsDead || _playerLeftController.Player.IsDead)
+		if (_playerRightController.Player.IsDead || _playerLeftController.Player.IsDead)
 		{
 			GameEnd = true;
 		}

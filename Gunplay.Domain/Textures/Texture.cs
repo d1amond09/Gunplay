@@ -7,9 +7,9 @@ using System.IO;
 
 namespace Gunplay.Domain.Textures;
 
-public class Texture
+public class Texture(int glHandle)
 {
-	public readonly int Handle;
+	public readonly int Handle = glHandle;
 
 	public static Texture LoadFromFile(string path)
 	{
@@ -35,11 +35,6 @@ public class Texture
 		GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 
 		return new Texture(handle);
-	}
-
-	public Texture(int glHandle)
-	{
-		Handle = glHandle;
 	}
 
 	public void Use(TextureUnit unit)

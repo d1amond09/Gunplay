@@ -9,7 +9,7 @@ namespace Gunplay.Domain.Models
 {
 	public class Weapon
 	{
-		private float _deltaAngle = 20f;
+		private readonly float _deltaAngle = 20f;
 		private float angleInDegrees = 0;
         public Bolt Bolt { get; set; }
 

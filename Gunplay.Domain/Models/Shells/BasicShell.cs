@@ -59,7 +59,7 @@ public class BasicShell : GameObject, IShell
 		return true;
 	}
 
-	public void Fly(float time)
+	public virtual void Fly(float time)
 	{
 		var t = Math.Abs(time);
 		if(IsAlive)

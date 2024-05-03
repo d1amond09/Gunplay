@@ -23,9 +23,10 @@ public class GameScene : GameWindow
 {
 	private readonly MainWindow _mainWindow;
 
-	private GameController _gameController;
+	private readonly GameController _gameController;
 
-	public GameScene(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings, MainWindow mainWindow)
+	public GameScene(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings, 
+					 MainWindow mainWindow, ShellFactory leftPlayerShellFactory, ShellFactory rightPlayerShellFactory)
 		: base(gameWindowSettings, nativeWindowSettings)
 	{
 		_mainWindow = mainWindow;
@@ -34,14 +35,14 @@ public class GameScene : GameWindow
 		UpdateTime = 100;
 		//UpdateFrequency = 144;
 
-		IBaseRepository<Background> backgroundRepository = new BackgroundRepository();
+		IFactory<Background> backgroundRepository = new BackgroundFactory();
 		BackgroundController backgroundController = new(backgroundRepository);
 
-		IBaseRepository<Player> playerLeftRepository = new PlayerLeftRepository();
-		PlayerController playerLeftController = new(playerLeftRepository);
+		IFactory<Player> playerLeftRepository = new PlayerLeftFactory();
+		PlayerController playerLeftController = new(playerLeftRepository, leftPlayerShellFactory);
 
-		IBaseRepository<Player> playerRightRepository = new PlayerRightRepository();
-		PlayerController playerRightController = new(playerRightRepository);
+		IFactory<Player> playerRightRepository = new PlayerRightFactory();
+		PlayerController playerRightController = new(playerRightRepository, rightPlayerShellFactory);
 
 		_gameController = new(backgroundController, playerLeftController, playerRightController);
 	}
@@ -57,8 +58,8 @@ public class GameScene : GameWindow
 		//GL.Enable(EnableCap.CullFace);
 		//GL.CullFace(CullFaceMode.Back);
 		//-------------------------------
+		_mainWindow.Hide();
 
-		
 	}
 
 

@@ -6,12 +6,14 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello</Configurations>
+    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="main.gif" />
     <None Remove="View\basicShell.png" />
+    <None Remove="View\Images\fastShell.png" />
+    <None Remove="View\Images\freezeShell.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,7 +27,15 @@
 
   <ItemGroup>
     <Resource Include="main.gif" />
-    <Resource Include="View\Images\basicShell.png" />
+    <Resource Include="View\Images\basicShell.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Images\fastShell.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="View\Images\freezeShell.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

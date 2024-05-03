@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Gunplay.DAL;
+using Gunplay.DAL.Repositories;
+using Gunplay.Domain.Models.Shells;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 
@@ -20,6 +23,7 @@ namespace Gunplay.View
 	public partial class StartPage : Page
 	{
 		public MainWindow Menu { get; set; } = default!;
+		public Queue<ShellType> _shellTypes;
 
 		private int _points;
 		private int _damage;
@@ -29,22 +33,25 @@ namespace Gunplay.View
 		private NativeWindowSettings NWSettings => new()
 		{
 			WindowState = OpenTK.Windowing.Common.WindowState.Maximized,
-			//WindowBorder = WindowBorder.Hidden,
+			ClientSize = new (1920, 1080),
+			WindowBorder = WindowBorder.Hidden,
 			StartFocused = true,
 			StartVisible = true,
 
-			Flags = ContextFlags.ForwardCompatible,         //ForwardCompatible
-			APIVersion = new Version(4, 6),         //4,6
-			Profile = ContextProfile.Core,  //Core
+			Flags = ContextFlags.ForwardCompatible,     
+			APIVersion = new Version(4, 6),      
+			Profile = ContextProfile.Core, 
 			API = ContextAPI.OpenGL,
 		};
-
-		public GameScene GameScene =>
-			new(GameWindowSettings.Default, NWSettings, Menu);
 
 		public StartPage()
 		{
 			InitializeComponent();
+
+			_shellTypes = new([new(@"Images/freezeShell.png", "Заморозка", 3),
+							   new(@"Images/fastShell.png", "Быстрый", 2), 
+							   new(@"Images/basicShell.png", "Обычный", 0)]);
+
 			_points = 10;
 			_damage = 0;
 			_reloadSpeed = 0;
@@ -55,8 +62,24 @@ namespace Gunplay.View
 
 		private void StartButton_Click(object sender, RoutedEventArgs e)
 		{
-			Menu.Hide();
-			GameScene.Run();
+			ShellFactory leftPlayerShellFactory;
+			switch(labelLeftShell.Content)
+			{
+				case "Обычный":
+					leftPlayerShellFactory = new BasicShellFactory();
+					break;
+				case "Быстрый":
+					leftPlayerShellFactory = new FastShellFactory();
+					break;
+				case "Заморозка":
+					leftPlayerShellFactory = new BasicShellFactory();
+					break;
+				default:
+					leftPlayerShellFactory = new BasicShellFactory();
+					break;
+			}
+			GameScene game = new(GameWindowSettings.Default, NWSettings, Menu, leftPlayerShellFactory, leftPlayerShellFactory);
+			game.Run();
 		}
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -125,6 +148,36 @@ namespace Gunplay.View
 		private void RemoveReloadSpeedRightButton_Click(object sender, RoutedEventArgs e)
 		{
 
+		}
+
+		private void AddTypeLeftButton_Click(object sender, RoutedEventArgs e)
+		{
+			if(_shellTypes.First().Points <= _points)
+			{
+				_points += _shellTypes.Last().Points;
+				ShellType shellType = _shellTypes.Dequeue();
+				var uri = new Uri(shellType.ImagePath, UriKind.Relative);
+				leftShell.Source = new BitmapImage(uri);
+				labelLeftShell.Content = shellType.Label;
+				_shellTypes.Enqueue(shellType);
+				_points -= shellType.Points;
+				pointsLeftLabel.Content = _points;
+			}
+		}
+
+		private void RemoveTypeLeftButton_Click(object sender, RoutedEventArgs e)
+		{
+			if (_shellTypes.First().Points <= _points)
+			{
+				_points += _shellTypes.Last().Points;
+				ShellType shellType = _shellTypes.Dequeue();
+				var uri = new Uri(shellType.ImagePath, UriKind.Relative);
+				leftShell.Source = new BitmapImage(uri);
+				labelLeftShell.Content = shellType.Label;
+				_shellTypes.Enqueue(shellType);
+				_points -= shellType.Points;
+				pointsLeftLabel.Content = _points;
+			}
 		}
 	}
 }

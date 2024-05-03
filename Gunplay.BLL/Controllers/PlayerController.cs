@@ -11,21 +11,21 @@ using Gunplay.Domain.Models.Base;
 using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
 using OpenTK.Graphics.OpenGL;
-using static System.Formats.Asn1.AsnWriter;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Gunplay.BLL.Controllers;
 
 public class PlayerController
 {
-	private readonly IBaseRepository<Player> _playerRepository;
+	private readonly IFactory<Player> _playerFactory;
+	private readonly ShellFactory _shellFactory;
 
 	public Player Player { get; private set; }
 
-	public PlayerController(IBaseRepository<Player> playerRepository)
+	public PlayerController(IFactory<Player> playerFactory, ShellFactory shellFactory)
 	{
-		_playerRepository = playerRepository;
-		Player = _playerRepository.Get();
+		_shellFactory = shellFactory;	
+		_playerFactory = playerFactory;
+		Player = _playerFactory.Create();
 	}
 
 	public void Move(Direction direction, float time)
@@ -46,8 +46,7 @@ public class PlayerController
 
 	public BasicShell? Fire(Direction direction)
 	{
-		ShellRepository shellRepository = new();
-		BasicShell shell = shellRepository.Get(Player);
+		BasicShell shell = _shellFactory.Create(Player);
 		float k = 0;
 		if (direction == Direction.Left)
 			k = -1;
@@ -72,9 +71,8 @@ public class PlayerController
 			if(shell.Rectangle.IsColliding(player.Chassis.Rectangle))
 			{
 				shell.IsAlive = false;
-				ElementBuffer rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
-				player.Chassis.ArrayObject = new ArrayObject(player.Chassis.ArrayBuffer, rctngl, Texture.LoadFromFile(@"data\img\playerleft_down-3.png"));
-				player.Health--;
+				player.Health -= shell.Damage;
+				player.ChangeTexture();
 				return true;
 			}
 		}
