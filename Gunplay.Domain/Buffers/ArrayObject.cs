@@ -82,8 +82,8 @@ public class ArrayObject(ArrayBuffer vertexBuffer, ElementBuffer elementBuffer, 
 
 	public void Dispose()
 	{
-		Delete();
 		DisableAttribAll();
+		Delete();
 		GC.SuppressFinalize(this);
 	}
 }

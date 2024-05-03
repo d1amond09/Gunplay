@@ -5,16 +5,138 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Gunplay.View"
       mc:Ignorable="d" 
-      d:DesignHeight="1400" d:DesignWidth="2000"
+      Width="1920" Height="1080"
       Title="StartPage">
 
-    <Grid Background="#FFF3A845" Margin="0,0,0,0">
-        <Rectangle HorizontalAlignment="Center" Height="1653" Stroke="Black" VerticalAlignment="Center" Width="4" Fill="Black"/>
-        <Label Content="Бронебойность" HorizontalAlignment="Left" Margin="10,96,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
-        <Label Content="Скорость Перезарядки" HorizontalAlignment="Left" Margin="10,156,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
-        <Button x:Name="startButton" Content="Начать" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="51" Width="152" Click="StartButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black"/>
-        <Button x:Name="cancelButton" Content="Отмена" BorderThickness="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="152" Click="CancelButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black" Margin="20,0,0,20"/>
-        <Label Content="Бронебойность" HorizontalAlignment="Right" Margin="0,96,548,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
-        <Label Content="Скорость Перезарядки" HorizontalAlignment="Right" Margin="0,156,439,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
+    <Grid Background="#FFF3A845" Margin="0,0,0,0" Height="auto" Width="auto">
+        <Button Panel.ZIndex="3" x:Name="startButton" Content="Начать" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="51" Width="152" Click="StartButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black"/>
+        <Rectangle HorizontalAlignment="Center" Height="1400" Stroke="Black" VerticalAlignment="Center" Width="4" Fill="Black"/>
+
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="540*"/>
+                <ColumnDefinition Width="540*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Margin="20,20,20,20" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Количество очков:" Style="{StaticResource label}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Бронебойность:" Style="{StaticResource label}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Скорость Перезарядки:" Style="{StaticResource label}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Тип снаряда:" Style="{StaticResource label}"/>
+
+                <Image Grid.Row="3" Grid.Column="2" Source="/View/Images/basicShell.png" />
+                <Label Grid.Row="3" Grid.Column="2" Margin="0 0 0 -25" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="32" Content="Обычный" Style="{StaticResource label}" />
+
+
+                <Label Grid.Row="0" Grid.Column="2" x:Name="pointsLeftLabel" Content="0" Style="{StaticResource label}" HorizontalAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="2" x:Name="damageLeftLabel" HorizontalAlignment="Center" Content="0" Style="{StaticResource label}"/>
+                <Button Grid.Row="1" Grid.Column="3" x:Name="addLeftDamageButton" Style="{StaticResource triangleButton}" Click="AddLeftDamageButton_Click" >
+                    <Polygon Points="0, 40, 0, 0, 40, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+                <Button Grid.Row="1"  Grid.Column="1" x:Name="removeLeftDamageButton" Style="{StaticResource triangleButton}" Click="RemoveLeftDamageButton_Click" Margin="20,0,0,0" >
+                    <Polygon Points="40, 0, 40, 40, 0, 20" Stroke="Black" 
+                             StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+
+                <Label Grid.Row="2" Grid.Column="2" x:Name="reloadSpeedLeftLabel" Content="0" HorizontalAlignment="Center" Style="{StaticResource label}"/>
+                <Button Grid.Row="2" Grid.Column="3" x:Name="addReloadSpeedLeftButton" Style="{StaticResource triangleButton}" Click="AddReloadSpeedLeftButton_Click" >
+                    <Polygon Points="0, 40, 0, 0, 40, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+                <Button Grid.Row="2" Grid.Column="1" x:Name="removeReloadSpeedLeftButton" Style="{StaticResource triangleButton}" Click="RemoveReloadSpeedLeftButton_Click" Margin="20,0,0,0">
+                    <Polygon Points="40, 0, 40, 40, 0, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+                
+                <Button Grid.Row="4" x:Name="cancelButton" Content="Отмена" BorderThickness="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="152" Click="CancelButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black" Margin="20,0,0,20"/>
+            </Grid>
+
+
+
+            <Grid Margin="20,20,20,20" Grid.Column="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Количество очков:" Style="{StaticResource label}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Бронебойность:" Style="{StaticResource label}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Скорость Перезарядки:" Style="{StaticResource label}"/>
+
+                <Label Grid.Row="0" Grid.Column="2" x:Name="pointsRightLabel" HorizontalAlignment="Center" Content="0" Style="{StaticResource label}"/>
+                <Label Grid.Row="1" Grid.Column="2" x:Name="damageRightLabel" HorizontalAlignment="Center" Content="0" Style="{StaticResource label}"/>
+                <Button Grid.Row="1" Grid.Column="3" x:Name="addRightDamageButton" Style="{StaticResource triangleButton}" Click="AddRightDamageButton_Click" Margin="0,0,0,0" >
+                    <Polygon Points="0, 40, 0, 0, 40, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+                <Button Grid.Row="1" Grid.Column="1" x:Name="removeRightDamageButton" Style="{StaticResource triangleButton}" Click="RemoveRightDamageButton_Click" Margin="20,0,0,0" >
+                    <Polygon Points="40, 0, 40, 40, 0, 20" Stroke="Black" 
+                 StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+
+                <Label Grid.Row="2" Grid.Column="2" x:Name="reloadSpeedRightLabel" Content="0" HorizontalAlignment="Center" Style="{StaticResource label}"/>
+                <Button Grid.Row="2" Grid.Column="3" x:Name="addReloadSpeedButton" Style="{StaticResource triangleButton}" Click="AddReloadSpeedRightButton_Click" Margin="0,0,0,0" >
+                    <Polygon Points="0, 40, 0, 0, 40, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+                <Button Grid.Row="2" Grid.Column="1" x:Name="removeReloadSpeedRightButton" Style="{StaticResource triangleButton}" Click="RemoveReloadSpeedRightButton_Click" Margin="20,0,0,0" >
+                    <Polygon Points="40, 0, 40, 40, 0, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
+                        <Polygon.Fill>
+                            <SolidColorBrush Color="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Tag}"/>
+                        </Polygon.Fill>
+                    </Polygon>
+                </Button>
+            </Grid>
+            
+        </Grid>
     </Grid>
 </Page>

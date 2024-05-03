@@ -23,11 +23,16 @@ namespace Gunplay.Domain.Models
 
 		public Chassis Chassis { get; set; }
 
+		public int Health { get; set; }
+
+		public bool IsAlive => Health > 0;
+		public bool IsDead => !IsAlive;
 
         public Player(Weapon canoon, Chassis chassis)
 		{
 			Canoon = canoon;
 			Chassis = chassis;
+			Health = 3;
 		}
 
 		public List<GameObject> GetObjects() 

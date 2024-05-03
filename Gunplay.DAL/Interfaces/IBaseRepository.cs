@@ -9,5 +9,7 @@ namespace Gunplay.DAL.Interfaces
 	public interface IBaseRepository<TEntity>
 	{
 		TEntity Get();
+
+		TEntity ChangeTexture(TEntity entity, string texturePath);
 	}
 }

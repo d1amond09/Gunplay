@@ -7,7 +7,13 @@ namespace Gunplay.DAL;
 public class BackgroundRepository : IBaseRepository<Background>
 {
     public BackgroundRepository() { }
-    public Background Get()
+
+	public Background ChangeTexture(Background entity, string texturePath)
+	{
+		throw new NotImplementedException();
+	}
+
+	public Background Get()
 	{
 		Vertex[] vertecies =
 		{

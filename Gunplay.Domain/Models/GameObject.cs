@@ -26,6 +26,6 @@ public abstract class GameObject : IDisposable
     public void Dispose()
 	{
 		ArrayObject.Dispose();
-		ArrayBuffer.Dispose();
+		GC.SuppressFinalize(this);
 	}
 }

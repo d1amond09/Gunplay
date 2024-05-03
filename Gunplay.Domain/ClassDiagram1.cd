@@ -1,7 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Gunplay.Domain.Buffers.ArrayBuffer" Collapsed="true">
+    <Position X="5.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEABAAABAAAAAAAAAAAAAABAQAAAAAAAAAAA=</HashCode>
+      <FileName>Buffers\ArrayBuffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.ArrayObject" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAASBAAoBAAAgYAAACIAEAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Buffers\ArrayObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.ArrayObjectCollection" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACACgAAAAAAABAUABAEgAEEEAAAAAAAAAAA=</HashCode>
+      <FileName>Buffers\ArrayObjectCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.BufferObject&lt;T&gt;" Collapsed="true">
+    <Position X="6.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACBAAABAEAAAAAAAAAEAABAQAAAACAAAAAA=</HashCode>
+      <FileName>Buffers\BufferObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.ElementBuffer" Collapsed="true">
+    <Position X="7.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAABAAAAAAAAAAAAAABAQAAAAAAAAAAA=</HashCode>
+      <FileName>Buffers\ElementBuffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Gunplay.Domain.Models.Base.Polygon" Collapsed="true">
-    <Position X="5.5" Y="3.5" Width="1.5" />
+    <Position X="0.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAgAAAAAAIAAAAAEAAAAAKAAAA=</HashCode>
       <FileName>Models\Base\Polygon.cs</FileName>
@@ -9,56 +47,56 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Gunplay.Domain.Models.Base.Vertex" Collapsed="true">
-    <Position X="12.25" Y="1.5" Width="1.5" />
+    <Position X="14.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAYAA=</HashCode>
       <FileName>Models\Base\Vertex.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Rectangle" Collapsed="true">
-    <Position X="5.5" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAABAAAEAAAAAAAAEAAMAAAAAAAAAABAAAAAAA=</HashCode>
       <FileName>Models\Base\Rectangle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Bolt" Collapsed="true">
-    <Position X="5.25" Y="1.75" Width="1.5" />
+    <Position X="10" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAEAAkAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Models\Player\Weapon\Bolt.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Muzzle" Collapsed="true">
-    <Position X="0.75" Y="1.75" Width="1.5" />
+    <Position X="12.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAEAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Models\Player\Weapon\Muzzle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Chassis" Collapsed="true">
-    <Position X="3" Y="1.75" Width="1.5" />
+    <Position X="1" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Models\Player\Chassis.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Weapon" Collapsed="true">
-    <Position X="14" Y="1.5" Width="1.5" />
+    <Position X="16.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAIAAAAAAIAAAAAAAEAAEAABIAAAAAAAAAgA=</HashCode>
       <FileName>Models\Player\Weapon.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Background" Collapsed="true">
-    <Position X="7.5" Y="1.75" Width="1.5" />
+    <Position X="7.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAAAAAAAA=</HashCode>
       <FileName>Models\Background.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.GameObject" Collapsed="true">
-    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Position X="6.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQQAAAAACAAAgAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\GameObject.cs</FileName>
@@ -66,36 +104,50 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Gunplay.Domain.Models.GameObjectList&lt;T&gt;" Collapsed="true">
-    <Position X="12.25" Y="0.5" Width="1.5" />
+    <Position X="20" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAACAAAgAAAAAABAAACIAAAAAAQAAAAAAAAAA=</HashCode>
       <FileName>Models\GameObjectList.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Player" Collapsed="true">
-    <Position X="14" Y="0.5" Width="1.5" />
+    <Position X="14.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQQAABAAAKAAAAAAAAAAAAAAAAAEAAAMBQAIAAAAAQA=</HashCode>
+      <HashCode>AQQACBAAAKAAAAAAAAAAEAAAAAAEAAAMBQAIAAAAAQA=</HashCode>
       <FileName>Models\Player.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Shells.BasicShell" Collapsed="true">
-    <Position X="9.75" Y="1.75" Width="1.5" />
+    <Position X="4.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAACCAAAAgAAAAAAIAAACAAAAgAAAMAAJBAAAAAAA=</HashCode>
       <FileName>Models\Shells\BasicShell.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.FastShell" Collapsed="true">
+    <Position X="3.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Shells\FastShell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.FreezeShell" Collapsed="true">
+    <Position X="5.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Shells\FreezeShell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Gunplay.Domain.Models.Shells.ShellDamageDecorator" Collapsed="true">
-    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Position X="2.75" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Shells\ShellDamageDecorator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Gunplay.Domain.Models.Shells.ShellDecorator" Collapsed="true">
-    <Position X="1.75" Y="3.5" Width="1.5" />
+    <Position X="1.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAACAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Shells\ShellDecorator.cs</FileName>
@@ -103,14 +155,56 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Gunplay.Domain.Models.Shells.ShellSpeedDecorator" Collapsed="true">
-    <Position X="2.75" Y="4.75" Width="1.5" />
+    <Position X="0.5" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Shells\ShellSpeedDecorator.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Gunplay.Domain.Textures.Shader" Collapsed="true">
+    <Position X="16.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Textures\Shader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gunplay.Domain.Textures.ShaderProgram" Collapsed="true">
+    <Position X="18.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACgAAAAAAAAABAAAAACAUAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Textures\ShaderProgram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gunplay.Domain.Textures.Texture" Collapsed="true">
+    <Position X="20" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAIAAAAAAAAAEAA=</HashCode>
+      <FileName>Textures\Texture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gunplay.Domain.Extensions" Collapsed="true">
+    <Position X="18.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Gunplay.Domain.Interfaces.IBuffer" Collapsed="true">
+    <Position X="14.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACBAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IBuffer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Gunplay.Domain.Interfaces.IFigure" Collapsed="true">
+    <Position X="16.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IFigure.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Interface Name="Gunplay.Domain.Models.Shells.IShell" Collapsed="true">
-    <Position X="12.25" Y="2.75" Width="1.5" />
+    <Position X="18.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Shells\IShell.cs</FileName>

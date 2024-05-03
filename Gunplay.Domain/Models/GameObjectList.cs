@@ -26,11 +26,8 @@ public class GameObjectList<T> where T : GameObject
 
 	public void Remove(T entity)
 	{
-		if(_gameObjects.Contains(entity))
-		{
-			_gameObjects.Remove(entity);
-			_arrayObjectCollection.Remove(entity.ArrayObject);
-		}
+		_gameObjects.Remove(entity);
+		_arrayObjectCollection.Remove(entity.ArrayObject);
 	}
 
 	public void AddBegin(T entity)

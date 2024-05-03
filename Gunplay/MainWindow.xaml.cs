@@ -43,8 +43,6 @@ public partial class MainWindow : Window
 	{
 		PageFrame.Content = new SettingsPage
 		{
-			Height = 400,
-			Width = 600,
 			VerticalAlignment = VerticalAlignment.Center,
 			HorizontalAlignment = HorizontalAlignment.Center,
 			DataContext = this

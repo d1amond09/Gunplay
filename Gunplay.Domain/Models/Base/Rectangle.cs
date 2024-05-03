@@ -95,14 +95,14 @@ public class Rectangle : Polygon
 			float vX = speedX * (float)Math.Cos(angle * (float)Math.PI / 180.0f);
 			float newX = startRectangle.Coordinates[i] + vX * time;
 			float newY = startRectangle.Coordinates[i + 1] + speedY * (float)Math.Sin(angle * (float)Math.PI / 180.0f) * time - (9.8f * 0.5f * time * time) * updateTime;
-			if ((newX <= 1f || newX >= -1f) && (newY <= 1f || newY >= -1f))
+			if (newX > 1f || newX < -1f || newY > 1f || newY < -1f)
 			{
-				Coordinates[i] = newX;
-				Coordinates[i + 1] = newY;
+				return false;
 			}
 			else
 			{
-				return false;
+				Coordinates[i] = newX;
+				Coordinates[i + 1] = newY;
 			}
 		}
 		Vertices = Coordinates.ToVertices();

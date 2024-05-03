@@ -10,7 +10,7 @@ public class ShellDamageDecorator : ShellDecorator
 {
 	public ShellDamageDecorator(IShell shell) : base(shell)
 	{
-		Damage++;
+		Damage += 0.5f;
 		shell.Damage = Damage;
 	}
 }

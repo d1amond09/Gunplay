@@ -10,7 +10,7 @@ public abstract class ShellDecorator : IShell
 {
 	private IShell _shell;
 
-	public uint Damage { get; set; }
+	public float Damage { get; set; }
 	public float ReloadSpeed { get; set; }
 
 	public ShellDecorator(IShell shell) 

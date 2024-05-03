@@ -8,7 +8,7 @@ namespace Gunplay.Domain.Models.Shells;
 
 public interface IShell
 {
-    public uint Damage { get; set; }
+    public float Damage { get; set; }
 
 	public float ReloadSpeed { get; set; }
 

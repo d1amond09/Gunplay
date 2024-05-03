@@ -43,9 +43,10 @@ public class ArrayObjectCollection : IEnumerable
 	{
 		foreach (ArrayObject item in _arrayObjects)
 		{
-			if(item == arrayObject)
+			if(item.Id == arrayObject.Id)
 			{
 				_arrayObjects.Remove(item);
+				//item.Dispose();
 				return;
 			}
 		}

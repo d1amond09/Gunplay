@@ -6,11 +6,12 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs</Configurations>
+    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="main.gif" />
+    <None Remove="View\basicShell.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
 
   <ItemGroup>
     <Resource Include="main.gif" />
+    <Resource Include="View\Images\basicShell.png" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,15 +57,16 @@ public class GameController
 		_playerLeftController.Update(time);
 		_playerRightController.Update(time);
 
+		//Debug.WriteLine(_playerLeftController.Player.Canoon.Shells.Count);
+
 		_playerLeftController.TouchWithStone(Stone);
 		_playerRightController.TouchWithStone(Stone);
 
-		if(_playerLeftController.HitTo(_playerRightController.Player))
-		{
-			GameEnd = true;
-		}
+		if(_playerRightController.HitTo(_playerLeftController.Player))
+			GameList.Add(_playerRightController.Player.Chassis);
+		_playerLeftController.HitTo(_playerRightController.Player);
 
-		if (_playerRightController.HitTo(_playerLeftController.Player))
+		if(_playerRightController.Player.IsDead || _playerLeftController.Player.IsDead)
 		{
 			GameEnd = true;
 		}

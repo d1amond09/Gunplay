@@ -10,7 +10,7 @@ public class ShellSpeedDecorator : ShellDecorator
 {
     public ShellSpeedDecorator(IShell shell) : base(shell)
     {
-	    ReloadSpeed++;
+	    ReloadSpeed+=0.1f;
 	    shell.ReloadSpeed = ReloadSpeed;
     }
 }

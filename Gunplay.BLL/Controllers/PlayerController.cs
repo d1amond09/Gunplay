@@ -5,10 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Gunplay.DAL;
 using Gunplay.DAL.Interfaces;
+using Gunplay.Domain.Buffers;
 using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Base;
 using Gunplay.Domain.Models.Shells;
+using Gunplay.Domain.Textures;
+using OpenTK.Graphics.OpenGL;
 using static System.Formats.Asn1.AsnWriter;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Gunplay.BLL.Controllers;
 
@@ -63,12 +67,14 @@ public class PlayerController
 
 	public bool HitTo(Player player)
 	{
-
 		foreach(BasicShell shell in Player.Canoon.Shells)
 		{
 			if(shell.Rectangle.IsColliding(player.Chassis.Rectangle))
 			{
 				shell.IsAlive = false;
+				ElementBuffer rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
+				player.Chassis.ArrayObject = new ArrayObject(player.Chassis.ArrayBuffer, rctngl, Texture.LoadFromFile(@"data\img\playerleft_down-3.png"));
+				player.Health--;
 				return true;
 			}
 		}
@@ -82,12 +88,19 @@ public class PlayerController
 
 	public void ClearShell(GameObjectList<GameObject> gameList)
 	{
+		List<BasicShell> shellsToDelete = [];
 		foreach (BasicShell shll in Player.Canoon.Shells)
 		{
 			if (!shll.IsAlive)
 			{
+				shellsToDelete.Add(shll);
 				gameList.Remove(shll);
+				
 			}
+		}
+		foreach(BasicShell shll in shellsToDelete)
+		{
+			Player.Canoon.Shells.Remove(shll);
 		}
 	}
 

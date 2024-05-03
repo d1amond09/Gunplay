@@ -26,7 +26,7 @@ public class BasicShell : GameObject, IShell
 	{
 		IsAlive = true;
 		Damage = 1;
-		ReloadSpeed = 0.9f;
+		ReloadSpeed = 1f;
 		_angle = 0;
 		_angleFly = 0;
 		_speedX = 0;
@@ -36,13 +36,13 @@ public class BasicShell : GameObject, IShell
 		_startRectangle = Rectangle;
 		Texture = Texture.LoadFromFile(textureFilePath);
 
-		ArrayBuffer = new(Rectangle.Coordinates, BufferUsageHint.DynamicDraw);
+		ArrayBuffer = new(Rectangle.Coordinates, BufferUsageHint.StaticDraw);
 		ElementBuffer rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
 
 		ArrayObject = new ArrayObject(ArrayBuffer, rctngl, Texture);
 	}
 
-	public uint Damage { get; set; }
+	public float Damage { get; set; }
 	public float ReloadSpeed { get; set; }
 
     public bool IsAlive { get; set; }
@@ -67,11 +67,6 @@ public class BasicShell : GameObject, IShell
 			IsAlive = Rectangle.Fly(_startRectangle, _speedX * time, _speedY * time, _time, _angle, t);
 			Rectangle.Rotate(_angleFly -= 0.8f * time);
 		}
-		else
-		{
-			GC.SuppressFinalize(this);
-		}
 		_time += time;
 	}
-
 }

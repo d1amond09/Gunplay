@@ -16,6 +16,7 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		dfsdf|Any CPU = dfsdf|Any CPU
 		dfsdfs|Any CPU = dfsdfs|Any CPU
+		hello|Any CPU = hello|Any CPU
 		ivan|Any CPU = ivan|Any CPU
 		qq|Any CPU = qq|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -27,6 +28,8 @@ Global
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.dfsdf|Any CPU.Build.0 = dfsdf|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.dfsdfs|Any CPU.ActiveCfg = dfsdfs|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.dfsdfs|Any CPU.Build.0 = dfsdfs|Any CPU
+		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.hello|Any CPU.ActiveCfg = hello|Any CPU
+		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.hello|Any CPU.Build.0 = hello|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.ivan|Any CPU.ActiveCfg = ivan|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.ivan|Any CPU.Build.0 = ivan|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.qq|Any CPU.ActiveCfg = qq|Any CPU
@@ -39,6 +42,8 @@ Global
 		{755CC221-73C3-4188-8011-E055792DE435}.dfsdf|Any CPU.Build.0 = dfsdf|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.dfsdfs|Any CPU.ActiveCfg = dfsdf|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.dfsdfs|Any CPU.Build.0 = dfsdf|Any CPU
+		{755CC221-73C3-4188-8011-E055792DE435}.hello|Any CPU.ActiveCfg = ivan|Any CPU
+		{755CC221-73C3-4188-8011-E055792DE435}.hello|Any CPU.Build.0 = ivan|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.ivan|Any CPU.ActiveCfg = Release|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.ivan|Any CPU.Build.0 = Release|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.qq|Any CPU.ActiveCfg = qq|Any CPU
@@ -51,6 +56,8 @@ Global
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.dfsdf|Any CPU.Build.0 = dfsdf|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.dfsdfs|Any CPU.ActiveCfg = dfsdf|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.dfsdfs|Any CPU.Build.0 = dfsdf|Any CPU
+		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.hello|Any CPU.ActiveCfg = ivan|Any CPU
+		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.hello|Any CPU.Build.0 = ivan|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.ivan|Any CPU.ActiveCfg = Release|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.ivan|Any CPU.Build.0 = Release|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.qq|Any CPU.ActiveCfg = qq|Any CPU
@@ -63,6 +70,8 @@ Global
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.dfsdf|Any CPU.Build.0 = Debug|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.dfsdfs|Any CPU.ActiveCfg = dfsdf|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.dfsdfs|Any CPU.Build.0 = dfsdf|Any CPU
+		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.hello|Any CPU.ActiveCfg = ivan|Any CPU
+		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.hello|Any CPU.Build.0 = ivan|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.ivan|Any CPU.ActiveCfg = qq|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.ivan|Any CPU.Build.0 = qq|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.qq|Any CPU.ActiveCfg = Release|Any CPU

@@ -12,7 +12,18 @@ public class PlayerRightRepository : IBaseRepository<Player>
 		
 	}
 
-    public Player Get()
+	public Player ChangeTexture(Player player, string texturePath)
+	{
+		Bolt bolt = player.Canoon.Bolt;
+		Muzzle muzzle = player.Canoon.Muzzle;
+		Weapon weapon = new(bolt, muzzle);
+
+		Chassis chassis = new(player.Chassis.Rectangle, texturePath);
+
+		return new Player(weapon, chassis);
+	}
+
+	public Player Get()
 	{
 		Vertex[] chassisVertecies =
 		{
