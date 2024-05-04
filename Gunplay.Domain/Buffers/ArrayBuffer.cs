@@ -3,7 +3,8 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Gunplay.Domain.Buffers;
 
-public class ArrayBuffer(float[] data, BufferUsageHint hint) : BufferObject<float>(data, hint)
+public class ArrayBuffer(float[] data, BufferUsageHint hint) 
+		   : BufferObject<float>(data, hint)
 {
 	public override void Activate()
 	{

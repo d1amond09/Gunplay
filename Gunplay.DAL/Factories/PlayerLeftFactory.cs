@@ -1,8 +1,8 @@
-﻿using Gunplay.Creation.Factories;
-using Gunplay.Domain.Models;
+﻿using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Geometry;
 using Gunplay.Domain.Textures;
-namespace Gunplay.Creation;
+
+namespace Gunplay.Creation.Factories;
 
 public class PlayerLeftFactory : Factory<Player>
 {
@@ -13,6 +13,7 @@ public class PlayerLeftFactory : Factory<Player>
 	private readonly Texture _textureMidHealth;
 	private readonly Texture _textureLowHealth;
 	private readonly Texture _textureMidHealthFreeze;
+	private readonly Texture _textureLowHealthFreeze;
 
 	public PlayerLeftFactory() 
 	{
@@ -28,13 +29,14 @@ public class PlayerLeftFactory : Factory<Player>
 		_textureMidHealth = Texture.LoadFromFile(@"data\img\playerleft_down-2.png");
 		_textureLowHealth = Texture.LoadFromFile(@"data\img\playerleft_down-5.png");
 		_textureMidHealthFreeze = Texture.LoadFromFile(@"data\img\playerleft_down-2-freeze.png");
+		_textureLowHealthFreeze = Texture.LoadFromFile(@"data\img\playerleft_down-5-freeze.png");
 	}
 
     public override Player Create()
 	{
 		Texture textureBolt = Texture.LoadFromFile(@"data\img\player_bolt.png");
 		Texture textureMuzzle = Texture.LoadFromFile(@"data\img\player_muzzle.png");
-		Texture textureChassis = Texture.LoadFromFile(@"data\img\playerright_down.png");
+		Texture textureChassis = Texture.LoadFromFile(@"data\img\playerleft_down.png");
 
 		Bolt bolt = new(_startBoltRctngl, textureBolt);
 		Muzzle muzzle = new(_startMuzzleRctngl, textureMuzzle);
@@ -43,6 +45,6 @@ public class PlayerLeftFactory : Factory<Player>
 
 		return new Player(weapon, chassis, 
 						  _textureMidHealth, _textureLowHealth, 
-						  _textureMidHealthFreeze, _textureLowHealth);
+						  _textureMidHealthFreeze, _textureLowHealthFreeze);
 	}
 }

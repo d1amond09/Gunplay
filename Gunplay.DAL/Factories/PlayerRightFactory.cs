@@ -1,22 +1,19 @@
-﻿using Gunplay.Creation.Factories;
-using Gunplay.Domain;
-using Gunplay.Domain.Models;
+﻿using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Geometry;
-using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
-namespace Gunplay.Creation;
+
+namespace Gunplay.Creation.Factories;
 
 public class PlayerRightFactory : Factory<Player>
 {
 	private readonly Rectangle _startChassisRctngl;
-
 	private readonly Rectangle _startMuzzleRctngl;
-
 	private readonly Rectangle _startBoltRctngl;
 
 	private readonly Texture _textureMidHealth;
 	private readonly Texture _textureMidHealthFreeze;
 	private readonly Texture _textureLowHealth;
+	private readonly Texture _textureLowHealthFreeze;
 
 	public PlayerRightFactory() 
 	{
@@ -29,9 +26,10 @@ public class PlayerRightFactory : Factory<Player>
 		_startBoltRctngl = new(new(0.88f, -0.895f), new(0.85f, -0.895f),
 							   new(0.88f, -0.845f), new(0.85f, -0.845f));
 
-		_textureMidHealth = Texture.LoadFromFile(@"data\img\playerleft_down-2.png");
-		_textureLowHealth = Texture.LoadFromFile(@"data\img\playerleft_down-5.png");
-		_textureMidHealthFreeze = Texture.LoadFromFile(@"data\img\playerleft_down-2-freeze.png");
+		_textureMidHealth = Texture.LoadFromFile(@"data\img\playerright_down-2.png");
+		_textureLowHealth = Texture.LoadFromFile(@"data\img\playerright_down-5.png");
+		_textureMidHealthFreeze = Texture.LoadFromFile(@"data\img\playerright_down-2-freeze.png");
+		_textureLowHealthFreeze = Texture.LoadFromFile(@"data\img\playerright_down-5-freeze.png");
 	}
 
 	public override Player Create()
@@ -49,6 +47,6 @@ public class PlayerRightFactory : Factory<Player>
 
 		return new Player(weapon, chassis, 
 						  _textureMidHealth, _textureLowHealth, 
-						  _textureMidHealthFreeze, _textureLowHealth);
+						  _textureMidHealthFreeze, _textureLowHealthFreeze);
 	}
 }

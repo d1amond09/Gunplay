@@ -34,6 +34,5 @@ public abstract class BufferObject<T> : IBuffer where T : struct
 	public void Dispose()
 	{
         Delete();
-        GC.SuppressFinalize(this);
 	}
 }

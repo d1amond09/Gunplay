@@ -18,7 +18,7 @@ public class ArrayObject(ArrayBuffer vertexBuffer,
 	public int Id { get; private set; } = GL.GenVertexArray();
 	public ElementBuffer ElementBuffer { get; private set; } = elementBuffer;
 	public ArrayBuffer ArrayBuffer { get; private set; } = vertexBuffer;
-
+	
 	public void Activate() => GL.BindVertexArray(Id);
 	public void Deactivate() => GL.BindVertexArray(NONE_ID);
 	
@@ -36,11 +36,13 @@ public class ArrayObject(ArrayBuffer vertexBuffer,
 		GL.EnableVertexAttribArray(index);
 		GL.VertexAttribPointer(index, elementsPerVertex, VertexAttribPointerType.Float, false, 5 * sizeof(float), offset);
 	}
+
 	public void Draw(int start, int count)
 	{
 		Activate();
 		GL.DrawArrays(PrimitiveType.Triangles, start, count);
 	}
+
 	public void DrawElements(int start, DrawElementsType type, int index)
 	{
 		Activate();
@@ -49,11 +51,13 @@ public class ArrayObject(ArrayBuffer vertexBuffer,
 		GL.BindTexture(TextureTarget.Texture2D, _texture.Handle);
 		GL.DrawElements(PrimitiveType.Triangles, ElementBuffer.Data.Length, type, start);
 	}
+
 	public void DisableAttribAll()
 	{
 		foreach (int attrib in _attribsList)
 			GL.DisableVertexAttribArray(attrib);
 	}
+
 	public void Delete()
 	{
 		if (Id == ERROR_CODE) return;
@@ -66,11 +70,11 @@ public class ArrayObject(ArrayBuffer vertexBuffer,
 
 		Id = ERROR_CODE;
 	}
+
 	public void Dispose()
 	{
 		DisableAttribAll();
 		Delete();
-		GC.SuppressFinalize(this);
 	}
 }
 

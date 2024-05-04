@@ -1,10 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Gunplay.Creation;
-using Gunplay.Creation.Factories;
+using Gunplay.Creation.Factories.Shells;
 using OpenTK.Windowing.Common;
-using OpenTK.Windowing.Common.Input;
 using OpenTK.Windowing.Desktop;
 
 namespace Gunplay.View
@@ -44,16 +42,16 @@ namespace Gunplay.View
 			Menu = menu;
 			InitializeComponent();
 
+			score.Content = $"{menu.LeftPlayerPoints} : {menu.RightPlayerPoints}";
+
 			_leftShellTypes = new([new(@"Images/freezeShell.png", "Заморозка", 3),
-							   new(@"Images/fastShell.png", "Быстрый", 2), 
-							   new(@"Images/basicShell.png", "Обычный", 0)]);
+								   new(@"Images/fastShell.png",   "Быстрый",   2), 
+								   new(@"Images/basicShell.png",  "Обычный",   0)]);
 
 			_rightShellTypes = new([new(@"Images/freezeShell.png", "Заморозка", 3),
-							   new(@"Images/fastShell.png", "Быстрый", 2),
-							   new(@"Images/basicShell.png", "Обычный", 0)]);
+									new(@"Images/fastShell.png",   "Быстрый",   2),
+									new(@"Images/basicShell.png",  "Обычный",   0)]);
 
-
-			score.Content = $"{menu.LeftPlayerPoints} : {menu.RightPlayerPoints}";
 
 			_leftPoints = 6;
 			_leftDamage = 0;

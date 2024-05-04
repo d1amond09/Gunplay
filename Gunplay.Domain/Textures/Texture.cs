@@ -1,5 +1,4 @@
 ﻿using OpenTK.Graphics.OpenGL4;
-using PixelFormat = OpenTK.Graphics.OpenGL4.PixelFormat;
 using StbImageSharp;
 
 namespace Gunplay.Domain.Textures;

@@ -5,17 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gunplay"
         mc:Ignorable="d"
-        Title="Перестрелка" Height="450" Width="800"
-        WindowState="Maximized" WindowStyle="None" Icon="/icon.png">
+        Title="Перестрелка" Height="1080" Width="1920"
+        WindowState="Maximized" WindowStyle="None" Icon="data/images/icon.png">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="data/images/main.gif"/>
         </Grid.Background>
-        <Label Content="Перестрелка" HorizontalAlignment="Center" Margin="0,9,0,0" VerticalAlignment="Top" FontSize="72" FontFamily="Bahnschrift SemiBold Condensed"/>
-        <Button Content="Играть" HorizontalAlignment="Center" Margin="0,0,0,124" VerticalAlignment="Center" Height="51" Width="314" Click="PlayButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFFBB83A"/>
-        <Button Content="Настройки" HorizontalAlignment="Center" VerticalAlignment="Center" Height="51" Width="314" Click="SettingsButton_Click" FontSize="36" RenderTransformOrigin="0.513,1.02" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D"/>
-        <Button Content="Выйти" HorizontalAlignment="Center" Margin="0,124,0,0" VerticalAlignment="Center" Height="51" Width="314" Click="CloseButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Перестрелка" Style="{StaticResource label}" HorizontalAlignment="Center" Margin="0,20,0,0" FontSize="72"/>
+        <Button Grid.Row="2" Content="Играть" Style="{StaticResource BasicButton}" Click="PlayButton_Click"/>
+        <Button Grid.Row="3" Content="Настройки" Style="{StaticResource BasicButton}" Click="SettingsButton_Click" />
+        <Button Grid.Row="4" Content="Выйти" Style="{StaticResource BasicButton}" Click="CloseButton_Click" />
        
-        <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden"></Frame>
+        <Frame Grid.Row="0" Grid.RowSpan="7" x:Name="PageFrame" NavigationUIVisibility="Hidden" HorizontalAlignment="Center"></Frame>
     </Grid>
 </Window>

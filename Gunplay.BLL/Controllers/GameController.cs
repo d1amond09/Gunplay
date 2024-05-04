@@ -17,9 +17,6 @@ public class GameController
     public bool GameEnd { get; private set; }
     public int RightPlayerPoints { get; set; }
     public int LeftPlayerPoints { get; set; }
-	public string Sound { get; set; }
-
-
 
 	public GameController(BackgroundController backgroundController, 
 						  PlayerController playerLeftController, 
@@ -46,7 +43,6 @@ public class GameController
 		gameList.AddRange(PlayerLeft.GetObjects());
 		gameList.AddRange(PlayerRight.GetObjects());
 		_gameObjects = new(gameList);
-		Sound = "";
 	}
 
 	public void Update(KeyboardState keyboardState, float time)
@@ -102,7 +98,6 @@ public class GameController
 			var shell = _playerLeftController.Fire(Direction.Right);
 			if (shell != null)
 				_gameObjects.Add(shell);
-			Sound = @"..\..\..\data\sounds\fire.mp3";
 		}
 
 		if (key.IsKeyDown(Keys.L))

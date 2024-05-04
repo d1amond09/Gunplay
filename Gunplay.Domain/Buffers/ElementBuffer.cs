@@ -25,6 +25,4 @@ public class ElementBuffer(uint[] data, BufferUsageHint hint) : BufferObject<uin
 		Activate();
 		GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(Data.Length * Marshal.SizeOf(typeof(uint))), Data, (BufferUsageHint)hint);
 	}
-
-	
 }

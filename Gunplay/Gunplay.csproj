@@ -6,13 +6,19 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda;dfsdfsdf;hbhb</Configurations>
+    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda;dfsdfsdf;hbhb;sdfsdf</Configurations>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="data\m\**" />
+    <EmbeddedResource Remove="data\m\**" />
+    <None Remove="data\m\**" />
+    <Page Remove="data\m\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="data\images\icon.png" />
     <None Remove="data\music\Music.mp3" />
-    <None Remove="icon.png" />
     <None Remove="View\basicShell.png" />
     <None Remove="View\Images\fastShell.png" />
     <None Remove="View\Images\freezeShell.png" />
@@ -38,7 +44,6 @@
     <Resource Include="data\music\Music.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="icon.png" />
     <Resource Include="View\Images\basicShell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -48,10 +53,6 @@
     <Resource Include="View\Images\freezeShell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="data\m\Новая папка\Новая папка\" />
   </ItemGroup>
 
 </Project>

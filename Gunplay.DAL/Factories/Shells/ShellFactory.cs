@@ -4,7 +4,7 @@ using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Models.Shells.Decorators;
 using Gunplay.Domain.Textures;
 
-namespace Gunplay.Creation;
+namespace Gunplay.Creation.Factories.Shells;
 
 public abstract class ShellFactory(int damageCount, int reloadSpeedCount)
 {

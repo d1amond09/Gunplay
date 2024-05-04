@@ -5,7 +5,7 @@ using Gunplay.Domain.Models.Geometry;
 
 namespace Gunplay.Domain.Models;
 
-public abstract class GameObject : IDisposable
+public abstract class GameObject
 {
 	private readonly ElementBuffer _rctngl;
 	public Rectangle Rectangle { get; protected set; }
@@ -16,32 +16,31 @@ public abstract class GameObject : IDisposable
 	{
 		Rectangle = rectangle;
 		Texture = texture;
-		ArrayBuffer ArrayBuffer = new(Rectangle.Coordinates, BufferUsageHint.StaticDraw);
+
+		ArrayBuffer ArrayBuffer = new(Rectangle.Coordinates, 
+									  BufferUsageHint.StaticDraw);
+
 		_rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
 
 		ArrayObject = new ArrayObject(ArrayBuffer, _rctngl, Texture);
 	}
 
 	public void ChangeTexture(Texture texture)
-	{
-		ElementBuffer rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
-		ArrayObject = new ArrayObject(ArrayObject.ArrayBuffer, rctngl, texture);
-	}
-
+		=> ArrayObject = new ArrayObject(ArrayObject.ArrayBuffer, 
+										 ArrayObject.ElementBuffer, 
+										 texture);
+	
 	public void Draw(int textureIndex)
-	{
-		ArrayObject.DrawElements(0, DrawElementsType.UnsignedInt, textureIndex);
-	}
+		=>	ArrayObject.
+			DrawElements(0, DrawElementsType.UnsignedInt, textureIndex);
 
 	public void Update()
 	{
-		ArgumentNullException.ThrowIfNull(ArrayObject.ArrayBuffer);
 		ArrayObject.ArrayBuffer.UpdateData();
 	}
 
-    public void Dispose()
+	public void Dispose()
 	{
 		ArrayObject.Dispose();
-		GC.SuppressFinalize(this);
 	}
 }

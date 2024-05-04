@@ -1,7 +1,7 @@
 ﻿using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Shells;
 
-namespace Gunplay.Creation.Factories;
+namespace Gunplay.Creation.Factories.Shells;
 
 public class BasicShellFactory(int damageCount, int reloadSpeedCount) : ShellFactory(damageCount, reloadSpeedCount)
 {

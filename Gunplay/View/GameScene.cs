@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK.Graphics.OpenGL;
-using OpenTK.Mathematics;
+﻿using OpenTK.Graphics.OpenGL;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
-using System.Windows.Documents;
 using Gunplay.Domain.Models;
 using Gunplay.Control;
-using Gunplay.Creation;
-using Gunplay.Domain.Models.Shells;
+using Gunplay.Creation.Factories.Shells;
 using Gunplay.Control.Controllers;
-using System.ComponentModel;
 using Gunplay.Creation.Factories;
-using System.Windows.Input;
 
 namespace Gunplay;
 
@@ -40,14 +30,14 @@ public class GameScene : GameWindow
 		if(_mainWindow.FPS != 0)
 			UpdateFrequency = _mainWindow.FPS;
 
-		Factory<Background> backgroundRepository = new BackgroundFactory();
-		BackgroundController backgroundController = new(backgroundRepository);
+		Factory<Background> backgroundFactory = new BackgroundFactory();
+		BackgroundController backgroundController = new(backgroundFactory);
 
-		Factory<Player> playerLeftRepository = new PlayerLeftFactory();
-		PlayerController playerLeftController = new(playerLeftRepository, leftPlayerShellFactory);
+		Factory<Player> playerLeftFactory = new PlayerLeftFactory();
+		PlayerController playerLeftController = new(playerLeftFactory, leftPlayerShellFactory);
 
-		Factory<Player> playerRightRepository = new PlayerRightFactory();
-		PlayerController playerRightController = new(playerRightRepository, rightPlayerShellFactory);
+		Factory<Player> playerRightFactory = new PlayerRightFactory();
+		PlayerController playerRightController = new(playerRightFactory, rightPlayerShellFactory);
 
 		_gameController = new(backgroundController, playerLeftController, playerRightController)
 		{

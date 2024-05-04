@@ -8,18 +8,25 @@
       d:DesignHeight="400" d:DesignWidth="650"
       Title="SettingsPage">
 
-    <Border BorderBrush="Black" BorderThickness="10">
+    <Border BorderBrush="Black" BorderThickness="15" CornerRadius="50" Background="#FFF3A845">
+        <Grid Background="Transparent" Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="Настройки" Style="{StaticResource label}" HorizontalAlignment="Center"  VerticalAlignment="Top"/>
+            <Label Grid.Row="1" Content="Музыка:" Style="{StaticResource label}" HorizontalAlignment="Left" Margin="20,20,20,20"/>
 
-        <Grid Background="#FFF3A845" Margin="0,0,0,0">
-            <Label Content="Музыка:" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
+            <Button Grid.Row="3" x:Name="cancelButton" Content="Назад" HorizontalAlignment="Left" Style="{StaticResource BasicButton}" VerticalAlignment="Bottom" Width="150" Click="CancelButton_Click"/>
+            <Button Grid.Row="3" x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Right" Style="{StaticResource BasicButton}" VerticalAlignment="Bottom" Width="150" Click="SaveButton_Click"/>
 
-            <Button x:Name="cancelButton" Content="Назад" HorizontalAlignment="Left" Margin="20,0,0,20" VerticalAlignment="Bottom" Height="51" Width="151" Click="CancelButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D"/>
-            <Button x:Name="saveButton" Content="Сохранить" HorizontalAlignment="Right" Margin="20,20,20,20" VerticalAlignment="Bottom" Height="51" Width="151" Click="SaveButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D"/>
-            
-            <Slider x:Name="musicSlider" HorizontalAlignment="Left" Margin="250,42,0,0" VerticalAlignment="Top" Width="300"
+            <Slider Grid.Row="1" x:Name="musicSlider" HorizontalAlignment="Left" Margin="285,45,0,0" VerticalAlignment="Top" Width="300"
                     Minimum="0" Maximum="1" ValueChanged="VolumeSlider_ValueChanged"/>
-            <Label Content="Частота Кадров:" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Bahnschrift SemiBold Condensed"/>
-            <StackPanel x:Name="stackPanel" Margin="250,-70,0,0" Orientation="Horizontal" Height="30" VerticalAlignment="Center">
+
+            <Label Grid.Row="2" Content="Частота Кадров:"  Style="{StaticResource label}" HorizontalAlignment="Left" Margin="20,20,20,20"/>
+            <StackPanel Grid.Row="2" x:Name="stackPanel" Margin="300,0,0,0" Orientation="Horizontal" Height="30" VerticalAlignment="Center">
                 <RadioButton x:Name="fpsAuto" BorderThickness="9" BorderBrush="#FFC95F01" GroupName="FPS" Content="Auto" IsChecked="True" FontSize="30" FontFamily="Bahnschrift SemiBold Condensed" Margin="0, 0, 0, 0" RenderTransformOrigin="0.5,0.5"/>
                 <RadioButton x:Name="fps90" BorderThickness="9" BorderBrush="#FFC95F01" GroupName="FPS" Content="90" FontSize="30" FontFamily="Bahnschrift SemiBold Condensed"  Margin="25, 0, 0, 0"/>
                 <RadioButton x:Name="fps144" BorderThickness="9" BorderBrush="#FFC95F01" GroupName="FPS" Content="144" FontSize="30" FontFamily="Bahnschrift SemiBold Condensed"  Margin="25, 0, 0, 0"/>

@@ -31,7 +31,6 @@ public class ArrayObjectCollection : IEnumerable<ArrayObject>
 			if(item.Id == arrayObject.Id)
 			{
 				_arrayObjects.Remove(item);
-				//item.Dispose();
 				return;
 			}
 		}
