@@ -1,6 +1,7 @@
 ﻿using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Geometry;
 using Gunplay.Domain.Models.Shells;
+using Gunplay.Domain.Models.Shells.Decorators;
 using Gunplay.Domain.Textures;
 namespace Gunplay.DAL;
 

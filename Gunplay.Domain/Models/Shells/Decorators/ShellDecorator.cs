@@ -1,4 +1,6 @@
-﻿namespace Gunplay.Domain.Models.Shells;
+﻿using Gunplay.Domain.Enum;
+
+namespace Gunplay.Domain.Models.Shells.Decorators;
 
 public abstract class ShellDecorator : Shell
 {
@@ -12,6 +14,7 @@ public abstract class ShellDecorator : Shell
 		Rectangle = _shell.Rectangle;
 		Texture = _shell.Texture;
 	}
+
 	public override void Fly(float time)
 	{
 		_shell.Fly(time);

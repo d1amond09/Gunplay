@@ -47,6 +47,8 @@ public class PlayerRightFactory : Factory<Player>
 
 		Chassis chassis = new(_startChassisRctngl, textureChassis);
 
-		return new Player(weapon, chassis, _textureMidHealth, _textureLowHealth, _textureMidHealthFreeze);
+		return new Player(weapon, chassis, 
+						  _textureMidHealth, _textureLowHealth, 
+						  _textureMidHealthFreeze, _textureLowHealth);
 	}
 }

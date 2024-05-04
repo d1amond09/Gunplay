@@ -1,10 +1,13 @@
 ﻿using Gunplay.Domain.Models.Shells;
+using Gunplay.Domain.Enum;
 
 namespace Gunplay.Domain.Models
 {
 	public class Weapon(Bolt bolt, Muzzle muzzle)
 	{
 		private const float DELTA_ANGLE = 20f;
+		private const float MAX_ANGLE = 85.0f;
+		private const float MIN_ANGLE = 10.0f;
 
 		private float angleInDegrees = 0;
 
@@ -39,11 +42,10 @@ namespace Gunplay.Domain.Models
 
 		public void Rotate(float time)
 		{
-			const float maxAngle = 85.0f;
-			const float minAngle = 10.0f;
 			float angle = DELTA_ANGLE * time;
 
-			if (Math.Abs(angleInDegrees + angle) >= minAngle && Math.Abs(angleInDegrees + angle) < maxAngle)
+			if (Math.Abs(angleInDegrees + angle) >= MIN_ANGLE && 
+				Math.Abs(angleInDegrees + angle) < MAX_ANGLE)
 			{
 				float centerX = Muzzle.Rectangle.Coordinates[0];
 				float centerY = Muzzle.Rectangle.Coordinates[1];

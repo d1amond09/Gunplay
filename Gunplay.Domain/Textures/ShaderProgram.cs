@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK.Graphics.OpenGL4;
+﻿using OpenTK.Graphics.OpenGL4;
+
 namespace Gunplay.Domain.Textures;
 
 public class ShaderProgram
 {
+	private const int ID_NONE = 0;
+
 	private readonly int _id;
 	private readonly int _vertexShaderIndex;
 	private readonly int _fragmentShaderIndex;
+
 	public ShaderProgram(string vertexFile, string fragmentFile) 
 	{
 
@@ -28,7 +27,7 @@ public class ShaderProgram
 		GL.LinkProgram(_id);
 		GL.GetProgram(_id, GetProgramParameterName.LinkStatus, out var code);
 
-		if (code == 0)
+		if (code == ID_NONE)
 		{
 			var infolog = GL.GetProgramInfoLog(_id);
 			throw new Exception($"Error in compile program shader #{_id}\n{infolog}");
@@ -40,7 +39,7 @@ public class ShaderProgram
 
 	public void Active() => GL.UseProgram(_id);
 
-	public void Deactive() => GL.UseProgram(0);
+	public void Deactive() => GL.UseProgram(ID_NONE);
 
 	public void Delete() => GL.DeleteProgram(_id);
 

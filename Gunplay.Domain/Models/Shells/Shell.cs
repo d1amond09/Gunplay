@@ -1,4 +1,5 @@
 ﻿using Gunplay.Domain.Textures;
+using Gunplay.Domain.Enum;
 using Gunplay.Domain.Models.Geometry;
 
 namespace Gunplay.Domain.Models.Shells;
@@ -9,14 +10,15 @@ public abstract class Shell(Rectangle rectangle, Texture texture) : GameObject(r
 	protected const float SPEED_Y = 6.3f;
 	protected const float DELTA_ANGLE_FLY = 0.8f;
 
+	protected float _time = 0;
 	protected float _angle = 0;
 	protected float _angleFly = 0;
-	protected float _time = 0;
 	protected float _kDirection = 0;
 	protected Rectangle _startRectangle = rectangle;
 
 	public virtual float Damage { get; protected set; } = .5f;
 	public virtual float ReloadSpeed { get; protected set; } = 2f;
+
 	public bool IsAlive { get; set; } = true;
 
 	public Shell(Shell shell) : this(shell.Rectangle, shell.Texture)
@@ -37,17 +39,17 @@ public abstract class Shell(Rectangle rectangle, Texture texture) : GameObject(r
 		return true;
 	}
 
-	public virtual void Fly(float time)
+	public virtual void Fly(float updateTime)
 	{
 		if (IsAlive)
 		{
 			IsAlive = Rectangle.Fly(_startRectangle, 
 									SPEED_X * _kDirection, 
 									SPEED_Y * _kDirection, 
-									_time, _angle, time);
+									_time, _angle, updateTime);
 
-			Rectangle.Rotate(_angleFly -= DELTA_ANGLE_FLY * time * _kDirection);
+			Rectangle.Rotate(_angleFly -= DELTA_ANGLE_FLY * updateTime * _kDirection);
 		}
-		_time += time;
+		_time += updateTime;
 	}
 }

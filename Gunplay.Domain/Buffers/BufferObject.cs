@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Gunplay.Domain.Interfaces;
+
 namespace Gunplay.Domain.Buffers;
 
 public abstract class BufferObject<T> : IBuffer where T : struct

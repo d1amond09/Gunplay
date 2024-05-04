@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Buffers;
+﻿using Gunplay.Domain.Buffers;
 
 namespace Gunplay.Domain.Models;
 
-public class GameObjectList<T> where T : GameObject
+public class GameObjectList<T> 
+			 where T : GameObject
 {
 	private List<T> _gameObjects;
 	private ArrayObjectCollection _arrayObjectCollection;
+
 	public GameObjectList(List<T> gameObjects)
 	{
 		_gameObjects = gameObjects;

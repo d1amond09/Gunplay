@@ -1,98 +1,96 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Buffers;
-using Gunplay.Domain.Models.Shells;
+﻿using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
-using OpenTK.Graphics.OpenGL;
+using Gunplay.Domain.Enum;
 
-namespace Gunplay.Domain.Models
+namespace Gunplay.Domain.Models;
+
+public class Player(Weapon canoon, Chassis chassis,
+					Texture textureMidHealth, Texture textureLowHealth, 
+					Texture textureMidHealthFreeze, Texture textureLowHealthFreeze)
 {
-	public class Player(Weapon canoon, Chassis chassis,
-						Texture textureMidHealth, Texture textureLowHealth, 
-						Texture textureMidHealthFreeze)
+	private const float PLAYER_SPEED = .1f;
+	private const float PLAYER_HEALTH = 3f;
+	private const float MID_PLAYER_HEALTH = 2.5f;
+	private const float LOW_PLAYER_HEALTH = 1.5f;
+	private const float RESET_RELOAD_TIME = 0f;
+
+	private readonly Texture _textureMidHealth = textureMidHealth;
+	private readonly Texture _textureMidHealthFreeze = textureMidHealthFreeze;
+	private readonly Texture _textureLowHealth = textureLowHealth;
+	private readonly Texture _textureLowHealthFreeze = textureLowHealthFreeze;
+
+	public Weapon Canoon { get; private set; } = canoon;
+	public Chassis Chassis { get; private set; } = chassis;
+
+	public float ReloadTime { get; private set; } = RESET_RELOAD_TIME;
+	public float Health { get; private set; } = PLAYER_HEALTH;
+	public float Speed { get; private set; } = PLAYER_SPEED;
+
+	public bool IsAlive => Health > 0;
+	public bool IsDead => !IsAlive;
+
+	public List<GameObject> GetObjects() 
+		=> [Canoon.Bolt, Canoon.Muzzle, Chassis];
+
+	public bool Fire(Direction direction)
 	{
-		private const float _speed = 0.1f;
-
-		private readonly Texture _textureMidHealth = textureMidHealth;
-		private readonly Texture _textureMidHealthFreeze = textureMidHealthFreeze;
-		private readonly Texture _textureLowHealth = textureLowHealth;
-
-		public Weapon Canoon { get; set; } = canoon;
-		public Chassis Chassis { get; set; } = chassis;
-
-		public float Time { get; set; }
-		public float Health { get; set; } = 3;
-		public float Speed { get; set; } = _speed;
-
-		public bool IsAlive => Health > 0;
-		public bool IsDead => !IsAlive;
-
-		public List<GameObject> GetObjects() 
-			=> [Canoon.Bolt, Canoon.Muzzle, Chassis];
-
-		public bool Fire(Direction direction)
+		if(Canoon.Fire(direction, ReloadTime))
 		{
-			if(Canoon.Fire(direction, Time))
+			ReloadTime = RESET_RELOAD_TIME;
+			return true;
+		}
+		return false;
+	}
+
+	public void Update(float time)
+	{
+		Chassis.Update();
+		Canoon.Update(time);
+		ReloadTime += time;
+	}
+
+	public void Move(float time)
+	{
+		if (Chassis.CanMove(Speed * time))
+		{
+			Chassis.Move(Speed * time);
+			Canoon.Move(Speed * time);
+		}
+	}
+
+	public void TakeDamage(Shell shell)
+	{
+		shell.IsAlive = false;
+		Health -= shell.Damage;
+		if (shell is FreezeShell freezeShell)
+		{
+			Speed *= freezeShell.FreezeSpeed;
+			if (Health < LOW_PLAYER_HEALTH)
 			{
-				Time = 0;
-				return true;
+				Chassis.ChangeTexture(_textureLowHealthFreeze);
 			}
-			return false;
-		}
-
-		public void Update(float time)
-		{
-			Chassis.Update();
-			Canoon.Update(time);
-			Time += time;
-		}
-
-		public void Move(float time)
-		{
-			if (Math.Abs(Chassis.Rectangle.Vertices.First().X + time * Speed) < 1)
+			else if (Health < MID_PLAYER_HEALTH)
 			{
-				Chassis.Move(Speed * time);
-				Canoon.Move(Speed * time);
+				Chassis.ChangeTexture(_textureMidHealthFreeze);
 			}
 		}
-
-		public void ChangeTexture(bool freeze = false)
+		else
 		{
-			ElementBuffer rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
-			if(freeze)
+			if (Health < LOW_PLAYER_HEALTH)
 			{
-				if (Health < 1.5)
-				{
-					Chassis.ArrayObject = new ArrayObject(Chassis.ArrayBuffer, rctngl, _textureLowHealth);
-				}
-				else if (Health < 2.5)
-				{
-					Chassis.ArrayObject = new ArrayObject(Chassis.ArrayBuffer, rctngl, _textureMidHealthFreeze);
-				}
+				Chassis.ChangeTexture(_textureLowHealth);
 			}
-			else
+			else if (Health < MID_PLAYER_HEALTH)
 			{
-				if (Health < 1.5)
-				{
-					Chassis.ArrayObject = new ArrayObject(Chassis.ArrayBuffer, rctngl, _textureLowHealth);
-				}
-				else if(Health < 2.5)
-				{
-					Chassis.ArrayObject = new ArrayObject(Chassis.ArrayBuffer, rctngl, _textureMidHealth);
-				}
+				Chassis.ChangeTexture(_textureMidHealth);
 			}
 		}
+	}
 
-		public void Dispose()
-		{
-			Chassis.Dispose();
-			Canoon.Muzzle.Dispose();
-			Canoon.Bolt.Dispose();
-		}
+	public void Dispose()
+	{
+		Chassis.Dispose();
+		Canoon.Muzzle.Dispose();
+		Canoon.Bolt.Dispose();
 	}
 }

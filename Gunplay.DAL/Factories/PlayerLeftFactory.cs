@@ -41,6 +41,6 @@ public class PlayerLeftFactory : Factory<Player>
 		Weapon weapon = new(bolt, muzzle);
 		Chassis chassis = new(_startChassisRctngl, textureChassis);
 
-		return new Player(weapon, chassis, _textureMidHealth, _textureLowHealth, _textureMidHealthFreeze);
+		return new Player(weapon, chassis, _textureMidHealth, _textureLowHealth, _textureMidHealthFreeze, _textureLowHealth);
 	}
 }
