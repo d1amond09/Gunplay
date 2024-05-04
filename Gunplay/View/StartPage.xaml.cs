@@ -1,28 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Gunplay.DAL;
-using Gunplay.DAL.Repositories;
-using Gunplay.Domain.Models.Shells;
+using Gunplay.Creation;
+using Gunplay.Creation.Factories;
 using OpenTK.Windowing.Common;
+using OpenTK.Windowing.Common.Input;
 using OpenTK.Windowing.Desktop;
 
 namespace Gunplay.View
 {
 	public partial class StartPage : Page
 	{
-		public MainWindow Menu { get; set; } = default!;
+		public MainWindow Menu { get; set; } 
 		public Queue<ShellType> _leftShellTypes;
 		public Queue<ShellType> _rightShellTypes;
 
@@ -37,11 +26,12 @@ namespace Gunplay.View
 
 		private NativeWindowSettings NWSettings => new()
 		{
-			WindowState = OpenTK.Windowing.Common.WindowState.Maximized,
+			WindowState = OpenTK.Windowing.Common.WindowState.Fullscreen,
 			ClientSize = new (1920, 1080),
 			WindowBorder = WindowBorder.Hidden,
 			StartFocused = true,
 			StartVisible = true,
+			
 
 			Flags = ContextFlags.ForwardCompatible,     
 			APIVersion = new Version(4, 6),      
@@ -49,8 +39,9 @@ namespace Gunplay.View
 			API = ContextAPI.OpenGL,
 		};
 
-		public StartPage()
+		public StartPage(MainWindow menu)
 		{
+			Menu = menu;
 			InitializeComponent();
 
 			_leftShellTypes = new([new(@"Images/freezeShell.png", "Заморозка", 3),
@@ -62,9 +53,15 @@ namespace Gunplay.View
 							   new(@"Images/basicShell.png", "Обычный", 0)]);
 
 
+			score.Content = $"{menu.LeftPlayerPoints} : {menu.RightPlayerPoints}";
+
 			_leftPoints = 6;
 			_leftDamage = 0;
 			_leftReloadSpeed = 0;
+
+			pointsLeftLabel.Content = _leftPoints;
+			damageLeftLabel.Content = _leftDamage;
+			reloadSpeedLeftLabel.Content = _leftReloadSpeed;
 
 			_rightPoints = 6;
 			_rightDamage = 0;
@@ -73,7 +70,6 @@ namespace Gunplay.View
 			pointsRightLabel.Content = _rightPoints;
 			damageRightLabel.Content = _rightDamage;
 			reloadSpeedRightLabel.Content = _rightReloadSpeed;
-
 		}
 
 		private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -99,8 +95,10 @@ namespace Gunplay.View
 					_ => new BasicShellFactory(rightDamageCount, rightReloadSpeedCount),
 				};
 
-				GameScene game = new(GameWindowSettings.Default, NWSettings, Menu, leftPlayerShellFactory, rightPlayerShellFactory);
+				GameScene game = new(GameWindowSettings.Default, NWSettings, Menu, 
+									leftPlayerShellFactory, rightPlayerShellFactory);
 				game.Run();
+				score.Content = $"{Menu.LeftPlayerPoints} : {Menu.RightPlayerPoints}";
 			}
 		}
 

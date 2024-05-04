@@ -10,30 +10,35 @@ using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 using System.Windows.Documents;
 using Gunplay.Domain.Models;
-using Gunplay.BLL;
-using Gunplay.DAL;
+using Gunplay.Control;
+using Gunplay.Creation;
 using Gunplay.Domain.Models.Shells;
-using Gunplay.BLL.Controllers;
+using Gunplay.Control.Controllers;
 using System.ComponentModel;
-using Gunplay.DAL.Repositories;
+using Gunplay.Creation.Factories;
+using System.Windows.Input;
 
 namespace Gunplay;
 
 public class GameScene : GameWindow
 {
 	private readonly MainWindow _mainWindow;
-
 	private readonly GameController _gameController;
 
+	private double FrameTime { get; set; }
+	private double FPS { get; set; }
+	
 	public GameScene(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings, 
 					 MainWindow mainWindow, ShellFactory leftPlayerShellFactory, ShellFactory rightPlayerShellFactory)
 		: base(gameWindowSettings, nativeWindowSettings)
 	{
 		_mainWindow = mainWindow;
 		VSync = VSyncMode.On;
+		CursorState = CursorState.Hidden;
+
 		Title = "Перестрелка";
-		UpdateTime = 100;
-		//UpdateFrequency = 144;
+		if(_mainWindow.FPS != 0)
+			UpdateFrequency = _mainWindow.FPS;
 
 		Factory<Background> backgroundRepository = new BackgroundFactory();
 		BackgroundController backgroundController = new(backgroundRepository);
@@ -44,22 +49,18 @@ public class GameScene : GameWindow
 		Factory<Player> playerRightRepository = new PlayerRightFactory();
 		PlayerController playerRightController = new(playerRightRepository, rightPlayerShellFactory);
 
-		_gameController = new(backgroundController, playerLeftController, playerRightController);
+		_gameController = new(backgroundController, playerLeftController, playerRightController)
+		{
+			RightPlayerPoints = _mainWindow.RightPlayerPoints,
+			LeftPlayerPoints = _mainWindow.LeftPlayerPoints,
+			
+		};
 	}
-
-	private double FrameTime { get; set; }
-
-	private double FPS { get; set; }
 
 	protected override void OnLoad()
 	{
 		base.OnLoad();
-		GL.ClearColor(Color4.Aqua);
-		//GL.Enable(EnableCap.CullFace);
-		//GL.CullFace(CullFaceMode.Back);
-		//-------------------------------
 		_mainWindow.Hide();
-
 	}
 
 
@@ -67,8 +68,6 @@ public class GameScene : GameWindow
 	{
 		base.OnResize(e);
 		GL.Viewport(0, 0, e.Width, e.Height);
-		//-----
-
 	}
 
 	protected override void OnUpdateFrame(FrameEventArgs frameEventArgs)
@@ -84,8 +83,11 @@ public class GameScene : GameWindow
 
 		var key = KeyboardState;
 		_gameController.Update(key, (float) frameEventArgs.Time);
+
 		if(_gameController.GameEnd)
 		{
+			_mainWindow.RightPlayerPoints = _gameController.RightPlayerPoints;
+			_mainWindow.LeftPlayerPoints = _gameController.LeftPlayerPoints;
 			_mainWindow.Show();
 			Close();
 			Dispose();

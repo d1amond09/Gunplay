@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Gunplay.View"
       mc:Ignorable="d" 
       Width="1920" Height="1080"
-      Title="StartPage">
+      Title="StartPage" >
 
     <Grid Background="#FFF3A845" Margin="0,0,0,0" Height="auto" Width="auto">
         <Button Panel.ZIndex="3" x:Name="startButton" Content="Начать" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="51" Width="152" Click="StartButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black"/>
@@ -21,7 +21,13 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.ColumnSpan="2" Content="0 : 0" FontSize="120" HorizontalAlignment="Center" Style="{StaticResource label}"/>
+            
+            <Label x:Name="score" Grid.Row="0" Grid.ColumnSpan="2" Width="400" 
+                   HorizontalContentAlignment="Center" Content="0 : 0" FontSize="120" 
+                   HorizontalAlignment="Center" Style="{StaticResource label}" 
+                   BorderBrush="Black" BorderThickness="5" Background="#FFECA446"/>
+            
+            
             <Grid Grid.Row="1" Margin="20,20,20,20" Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -81,7 +87,7 @@
                     </Polygon>
                 </Button>
                 
-                <Button Grid.Row="4" x:Name="cancelButton" Content="Отмена" BorderThickness="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="152" Click="CancelButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black" Margin="20,0,0,20"/>
+                <Button Grid.Row="4" x:Name="cancelButton" Content="Назад" BorderThickness="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="50" Width="152" Click="CancelButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFEEB13D" BorderBrush="Black" Margin="20,0,0,20"/>
                 <Button Grid.Row="3" Grid.Column="3" x:Name="addTypeLeftButton" Style="{StaticResource triangleButton}" Click="AddTypeLeftButton_Click" >
                     <Polygon Points="0, 40, 0, 0, 40, 20" Stroke="Black" StrokeThickness="5" Height="auto" Width="auto">
                         <Polygon.Fill>

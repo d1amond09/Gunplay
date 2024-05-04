@@ -4,7 +4,9 @@ namespace Gunplay.Domain.Textures;
 
 public class Shader
 {
-    public int Id { get; set; }
+	private const int NONE_ID = 0;
+
+	public int Id { get; set; }
 
     public Shader(ShaderType shaderType, string shaderFile) 
 	{ 
@@ -16,7 +18,7 @@ public class Shader
 
 		GL.GetShader(Id, ShaderParameter.CompileStatus, out var code );
 		
-		if (code == 0)
+		if (code == NONE_ID)
 		{
 			var infolog = GL.GetShaderInfoLog(Id);
 			throw new Exception($"Error in compile shader #{Id}\n{infolog}");

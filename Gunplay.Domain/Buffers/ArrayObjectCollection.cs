@@ -4,7 +4,7 @@ using Gunplay.Domain.Textures;
 
 namespace Gunplay.Domain.Buffers;
 
-public class ArrayObjectCollection : IEnumerable
+public class ArrayObjectCollection : IEnumerable<ArrayObject>
 {
 	private readonly List<ArrayObject> _arrayObjects;
 	private readonly ShaderProgram _shaderProgram;
@@ -23,13 +23,6 @@ public class ArrayObjectCollection : IEnumerable
 		DeactivateAll();
 	}
 
-	IEnumerator IEnumerable.GetEnumerator()
-	{
-		foreach(var arrayObj in _arrayObjects)
-		{
-			yield return arrayObj;
-		}
-	}
 
 	public void Remove(ArrayObject arrayObject)
 	{
@@ -47,10 +40,10 @@ public class ArrayObjectCollection : IEnumerable
 	public void DrawAll()
 	{
 		_shaderProgram.Active();
+
 		foreach (ArrayObject item in _arrayObjects)
-		{
 			item.DrawElements(0, DrawElementsType.UnsignedInt, TextureIndex);
-		}
+
 		_shaderProgram.Deactive();
 	}
 
@@ -85,5 +78,15 @@ public class ArrayObjectCollection : IEnumerable
 	{
 		foreach (ArrayObject item in _arrayObjects)
 			item.AttribPointer(TextureIndex, 2, 3 * sizeof(float));
+	}
+
+	IEnumerator IEnumerable.GetEnumerator()
+	{
+		return _arrayObjects.GetEnumerator();
+	}
+
+	public IEnumerator<ArrayObject> GetEnumerator()
+	{
+		return GetEnumerator();
 	}
 }

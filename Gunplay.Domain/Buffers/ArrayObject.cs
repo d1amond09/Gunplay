@@ -9,6 +9,8 @@ public class ArrayObject(ArrayBuffer vertexBuffer,
 						 Texture texture) : IBuffer
 {
 	private const int ERROR_CODE = -1;
+	private const int NONE_ID = 0;
+
 
 	private readonly List<int> _attribsList = [];
 	private readonly Texture _texture = texture;
@@ -18,7 +20,7 @@ public class ArrayObject(ArrayBuffer vertexBuffer,
 	public ArrayBuffer ArrayBuffer { get; private set; } = vertexBuffer;
 
 	public void Activate() => GL.BindVertexArray(Id);
-	public void Deactivate() => GL.BindVertexArray(0);
+	public void Deactivate() => GL.BindVertexArray(NONE_ID);
 	
 	public void AttachBuffers()
 	{

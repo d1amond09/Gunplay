@@ -1,10 +1,10 @@
-﻿using Gunplay.DAL.Repositories;
+﻿using Gunplay.Creation.Factories;
 using Gunplay.Domain;
 using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Geometry;
 using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
-namespace Gunplay.DAL;
+namespace Gunplay.Creation;
 
 public class PlayerRightFactory : Factory<Player>
 {

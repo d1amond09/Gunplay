@@ -29,7 +29,7 @@ public class Player(Weapon canoon, Chassis chassis,
 	public bool IsAlive => Health > 0;
 	public bool IsDead => !IsAlive;
 
-	public List<GameObject> GetObjects() 
+	public GameObject[] GetObjects() 
 		=> [Canoon.Bolt, Canoon.Muzzle, Chassis];
 
 	public bool Fire(Direction direction)

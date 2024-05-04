@@ -8,7 +8,7 @@ public abstract class Shell(Rectangle rectangle, Texture texture) : GameObject(r
 {
 	protected const float SPEED_X = 2.2f;
 	protected const float SPEED_Y = 6.3f;
-	protected const float DELTA_ANGLE_FLY = 0.8f;
+	protected const float DELTA_ANGLE_FLY = -90.8f;
 
 	protected float _time = 0;
 	protected float _angle = 0;
@@ -30,6 +30,7 @@ public abstract class Shell(Rectangle rectangle, Texture texture) : GameObject(r
 	public virtual bool FlyStart(Direction dir, float angle)
 	{
 		_angle = angle;
+		_angleFly = 0;
 		_time = 0;
 		_startRectangle = new Rectangle(Rectangle.Coordinates);
 
@@ -48,7 +49,8 @@ public abstract class Shell(Rectangle rectangle, Texture texture) : GameObject(r
 									SPEED_Y * _kDirection, 
 									_time, _angle, updateTime);
 
-			Rectangle.Rotate(_angleFly -= DELTA_ANGLE_FLY * updateTime * _kDirection);
+			_angleFly += updateTime * DELTA_ANGLE_FLY * _kDirection;
+			Rectangle.Rotate(_angleFly * updateTime);
 		}
 		_time += updateTime;
 	}

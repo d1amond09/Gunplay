@@ -4,7 +4,7 @@ namespace Gunplay.Domain.Textures;
 
 public class ShaderProgram
 {
-	private const int ID_NONE = 0;
+	private const int NONE_ID = 0;
 
 	private readonly int _id;
 	private readonly int _vertexShaderIndex;
@@ -27,7 +27,7 @@ public class ShaderProgram
 		GL.LinkProgram(_id);
 		GL.GetProgram(_id, GetProgramParameterName.LinkStatus, out var code);
 
-		if (code == ID_NONE)
+		if (code == NONE_ID)
 		{
 			var infolog = GL.GetProgramInfoLog(_id);
 			throw new Exception($"Error in compile program shader #{_id}\n{infolog}");
@@ -39,7 +39,7 @@ public class ShaderProgram
 
 	public void Active() => GL.UseProgram(_id);
 
-	public void Deactive() => GL.UseProgram(ID_NONE);
+	public void Deactive() => GL.UseProgram(NONE_ID);
 
 	public void Delete() => GL.DeleteProgram(_id);
 

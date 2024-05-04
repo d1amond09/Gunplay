@@ -1,8 +1,8 @@
-﻿using Gunplay.DAL.Repositories;
+﻿using Gunplay.Creation.Factories;
 using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Geometry;
 using Gunplay.Domain.Textures;
-namespace Gunplay.DAL;
+namespace Gunplay.Creation;
 
 public class PlayerLeftFactory : Factory<Player>
 {
@@ -41,6 +41,8 @@ public class PlayerLeftFactory : Factory<Player>
 		Weapon weapon = new(bolt, muzzle);
 		Chassis chassis = new(_startChassisRctngl, textureChassis);
 
-		return new Player(weapon, chassis, _textureMidHealth, _textureLowHealth, _textureMidHealthFreeze, _textureLowHealth);
+		return new Player(weapon, chassis, 
+						  _textureMidHealth, _textureLowHealth, 
+						  _textureMidHealthFreeze, _textureLowHealth);
 	}
 }

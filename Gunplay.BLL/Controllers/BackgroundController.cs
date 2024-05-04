@@ -1,7 +1,7 @@
-﻿using Gunplay.DAL.Repositories;
+﻿using Gunplay.Creation.Factories;
 using Gunplay.Domain.Models;
 
-namespace Gunplay.BLL.Controllers;
+namespace Gunplay.Control.Controllers;
 
 public class BackgroundController
 {

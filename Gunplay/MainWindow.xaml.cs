@@ -19,37 +19,53 @@ public partial class MainWindow : Window
 {
     public int LeftPlayerPoints { get; set; }
     public int RightPlayerPoints { get; set; }
-    public MainWindow()
+
+	public MediaPlayer MediaPlayer { get; set; }
+	public int FPS { get; set; }
+
+	public MainWindow()
 	{
 		InitializeComponent();
+		MediaPlayer = new();
+		MediaPlayer.Open(new Uri(@"..\..\..\data\music\Music.mp3", UriKind.RelativeOrAbsolute));
+		MediaPlayer.Play();
 		LeftPlayerPoints = 0;
 		RightPlayerPoints = 0;
+		FPS = 0;
+		MediaPlayer.MediaEnded += MediaPlayer_MediaEnded!;
+	}
+
+	private void MediaPlayer_MediaEnded(object sender, EventArgs e)
+	{
+		MediaPlayer.Position = TimeSpan.Zero;
 	}
 
 	private void PlayButton_Click(object sender, RoutedEventArgs e)
 	{
-		PageFrame.Content = new StartPage
+		PageFrame.Content = new StartPage(this)
 		{
-			Height = 805,
+			Height = 850,
 			Width = 1550,
 			VerticalAlignment = VerticalAlignment.Center,
 			HorizontalAlignment = HorizontalAlignment.Center,
-			Menu = this
 		};
 	}
 
 	private void CloseButton_Click(object sender, RoutedEventArgs e)
 	{
+		MediaPlayer.Stop();
 		Close();
 	}
 
 	private void SettingsButton_Click(object sender, RoutedEventArgs e)
 	{
-		PageFrame.Content = new SettingsPage
+		PageFrame.Content = new SettingsPage(this)
 		{
+			Height = 400,
+			Width = 650,
 			VerticalAlignment = VerticalAlignment.Center,
 			HorizontalAlignment = HorizontalAlignment.Center,
-			DataContext = this
+			DataContext = this,
 		};
 	}
 }

@@ -6,24 +6,24 @@ public class GameObjectList<T>
 			 where T : GameObject
 {
 	private List<T> _gameObjects;
-	private ArrayObjectCollection _arrayObjectCollection;
+	private ArrayObjectCollection _arrayObjects;
 
-	public GameObjectList(List<T> gameObjects)
+	public GameObjectList(IEnumerable<T> gameObjects)
 	{
-		_gameObjects = gameObjects;
-		_arrayObjectCollection = new(_gameObjects.Select(g => g.ArrayObject).ToArray());
+		_gameObjects = [.. gameObjects];
+		_arrayObjects = new(_gameObjects.Select(g => g.ArrayObject).ToArray());
 	}
 
 	public void Add(T entity)
 	{
 		_gameObjects.Add(entity);
-		_arrayObjectCollection = new(_gameObjects.Select(g => g.ArrayObject).ToArray());
+		_arrayObjects = new(_gameObjects.Select(g => g.ArrayObject).ToArray());
 	}
 
 	public void Remove(T entity)
 	{
 		_gameObjects.Remove(entity);
-		_arrayObjectCollection.Remove(entity.ArrayObject);
+		_arrayObjects.Remove(entity.ArrayObject);
 	}
 
 	public void AddBegin(T entity)
@@ -32,18 +32,18 @@ public class GameObjectList<T>
 		List<T> list = _gameObjects.GetRange(index, _gameObjects.Count - index);
 		_gameObjects.Insert(index, entity);
 		_gameObjects.AddRange(list);
-		_arrayObjectCollection = new(_gameObjects.Select(g => g.ArrayObject).ToArray());
+		_arrayObjects = new(_gameObjects.Select(g => g.ArrayObject).ToArray());
 	}
 
 	public void Draw()
 	{
-		_arrayObjectCollection.DrawAll();
+		_arrayObjects.DrawAll();
 	}
 
 	public void Dispose()
 	{
 		_gameObjects = [];
-		_arrayObjectCollection.Dispose();
+		_arrayObjects.Dispose();
 	}
 
 }

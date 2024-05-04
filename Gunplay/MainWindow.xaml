@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gunplay"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        WindowState="Maximized">
+        Title="Перестрелка" Height="450" Width="800"
+        WindowState="Maximized" WindowStyle="None" Icon="/icon.png">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="Images/main.gif"/>
+            <ImageBrush ImageSource="data/images/main.gif"/>
         </Grid.Background>
         <Label Content="Перестрелка" HorizontalAlignment="Center" Margin="0,9,0,0" VerticalAlignment="Top" FontSize="72" FontFamily="Bahnschrift SemiBold Condensed"/>
         <Button Content="Играть" HorizontalAlignment="Center" Margin="0,0,0,124" VerticalAlignment="Center" Height="51" Width="314" Click="PlayButton_Click" FontSize="36" FontFamily="Bahnschrift SemiBold Condensed" Background="#FFFBB83A"/>

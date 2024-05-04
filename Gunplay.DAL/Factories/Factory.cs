@@ -1,4 +1,4 @@
-﻿namespace Gunplay.DAL.Repositories;
+﻿namespace Gunplay.Creation.Factories;
 
 public abstract class Factory<TEntity>
 {

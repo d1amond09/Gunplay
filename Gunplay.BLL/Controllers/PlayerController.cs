@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.DAL;
-using Gunplay.DAL.Repositories;
+﻿using Gunplay.Creation;
+using Gunplay.Creation.Factories;
 using Gunplay.Domain.Enum;
 using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Geometry;
 using Gunplay.Domain.Models.Shells;
-using Gunplay.Domain.Textures;
-using OpenTK.Graphics.OpenGL;
 
-namespace Gunplay.BLL.Controllers;
+namespace Gunplay.Control.Controllers;
 
 public class PlayerController
 {
@@ -20,6 +13,8 @@ public class PlayerController
 	private readonly ShellFactory _shellFactory;
 
 	public Player Player { get; private set; }
+	public bool IsLose => Player.IsDead;
+
 
 	public PlayerController(Factory<Player> playerFactory, ShellFactory shellFactory)
 	{
@@ -60,13 +55,13 @@ public class PlayerController
 			.ToList().ForEach(x => x.IsAlive = false);
 	}
 
-	public bool HitTo(Player player)
+	public bool HitTo(PlayerController playerController)
 	{
 		foreach(Shell shell in Player.Canoon.Shells)
 		{
-			if(shell.Rectangle.IsColliding(player.Chassis.Rectangle))
+			if(shell.Rectangle.IsColliding(playerController.Player.Chassis.Rectangle))
 			{
-				player.TakeDamage(shell);
+				playerController.Player.TakeDamage(shell);
 				return true;
 			}
 		}

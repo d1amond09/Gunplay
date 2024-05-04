@@ -1,13 +1,12 @@
-﻿using Gunplay.DAL.Repositories;
-using Gunplay.Domain;
-using Gunplay.Domain.Models;
+﻿using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Shells;
-using Gunplay.Domain.Textures;
-namespace Gunplay.DAL;
+
+namespace Gunplay.Creation;
 
 public class FreezeShellFactory(int damageCount, int reloadSpeedCount) : ShellFactory(damageCount, reloadSpeedCount)
 {
 	protected override string TexturePath => @"data\img\shell.png";
+
 	public override FreezeShell Create(Player player)
 	{
 	

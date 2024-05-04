@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunplay", "Gunplay\Gunplay.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunplay.Domain", "Gunplay.Domain\Gunplay.Domain.csproj", "{755CC221-73C3-4188-8011-E055792DE435}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunplay.BLL", "Gunplay.BLL\Gunplay.BLL.csproj", "{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunplay.Control", "Gunplay.BLL\Gunplay.Control.csproj", "{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunplay.DAL", "Gunplay.DAL\Gunplay.DAL.csproj", "{6E632D84-EBDB-44A9-A4A9-918111E3DA89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gunplay.Creation", "Gunplay.DAL\Gunplay.Creation.csproj", "{6E632D84-EBDB-44A9-A4A9-918111E3DA89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

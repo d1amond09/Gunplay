@@ -10,9 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="data\images\icon.png" />
-    <None Remove="data\music\Music.mp3" />
-    <None Remove="icon.png" />
     <None Remove="View\basicShell.png" />
     <None Remove="View\Images\fastShell.png" />
     <None Remove="View\Images\freezeShell.png" />
@@ -23,22 +20,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gunplay.BLL\Gunplay.Control.csproj" />
-    <ProjectReference Include="..\Gunplay.DAL\Gunplay.Creation.csproj" />
+    <ProjectReference Include="..\Gunplay.Control\Gunplay.Control.csproj" />
     <ProjectReference Include="..\Gunplay.Domain\Gunplay.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="data\images\icon.png">
+    <Resource Include="Images\main.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="data\images\main.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="data\music\Music.mp3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="icon.png" />
     <Resource Include="View\Images\basicShell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -48,10 +37,6 @@
     <Resource Include="View\Images\freezeShell.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="data\m\Новая папка\Новая папка\" />
   </ItemGroup>
 
 </Project>

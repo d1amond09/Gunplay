@@ -1,34 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.BLL.Controllers;
-using Gunplay.DAL;
-using Gunplay.Domain;
-using Gunplay.Domain.Buffers;
+﻿using Gunplay.Control.Controllers;
+using Gunplay.Domain.Enum;
 using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Geometry;
-using Gunplay.Domain.Models.Shells;
-using OpenTK.Graphics.OpenGL;
-using OpenTK.Windowing.Common;
-using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
-namespace Gunplay.BLL;
+namespace Gunplay.Control;
 
 public class GameController
 {
-    public bool GameEnd { get; private set; }
     private readonly BackgroundController _backgroundController;
 	private readonly PlayerController _playerLeftController;
 	private readonly PlayerController _playerRightController;
+	private readonly GameObjectList<GameObject> _gameObjects;
 	private readonly Polygon Stone;
 
-    public GameObjectList<GameObject> GameList { get; set; }
+    public bool GameEnd { get; private set; }
+    public int RightPlayerPoints { get; set; }
+    public int LeftPlayerPoints { get; set; }
+	public string Sound { get; set; }
 
-    public GameController(BackgroundController backgroundController, 
+
+
+	public GameController(BackgroundController backgroundController, 
 						  PlayerController playerLeftController, 
 						  PlayerController playerRightController)
     {
@@ -52,7 +45,8 @@ public class GameController
 		gameList.Add(background);
 		gameList.AddRange(PlayerLeft.GetObjects());
 		gameList.AddRange(PlayerRight.GetObjects());
-		GameList = new(gameList);
+		_gameObjects = new(gameList);
+		Sound = "";
 	}
 
 	public void Update(KeyboardState keyboardState, float time)
@@ -63,14 +57,21 @@ public class GameController
 		_playerLeftController.TouchWithStone(Stone);
 		_playerRightController.TouchWithStone(Stone);
 
-		if(_playerRightController.HitTo(_playerLeftController.Player))
-			GameList.Add(_playerLeftController.Player.Chassis);
+		if(_playerRightController.HitTo(_playerLeftController))
+			_gameObjects.Add(_playerLeftController.Player.Chassis);
 
-		if(_playerLeftController.HitTo(_playerRightController.Player))
-			GameList.Add(_playerRightController.Player.Chassis);
+		if(_playerLeftController.HitTo(_playerRightController))
+			_gameObjects.Add(_playerRightController.Player.Chassis);
 
-		if (_playerRightController.Player.IsDead || _playerLeftController.Player.IsDead)
+		if (_playerRightController.IsLose)
 		{
+			LeftPlayerPoints++;
+			GameEnd = true;
+		}
+
+		if (_playerLeftController.IsLose)
+		{
+			RightPlayerPoints++;
 			GameEnd = true;
 		}
 
@@ -100,7 +101,8 @@ public class GameController
 		{
 			var shell = _playerLeftController.Fire(Direction.Right);
 			if (shell != null)
-				GameList.Add(shell);
+				_gameObjects.Add(shell);
+			Sound = @"..\..\..\data\sounds\fire.mp3";
 		}
 
 		if (key.IsKeyDown(Keys.L))
@@ -128,20 +130,20 @@ public class GameController
 		{
 			var shell = _playerRightController.Fire(Direction.Left);
 			if (shell != null)
-				GameList.Add(shell);
+				_gameObjects.Add(shell);
 		}
 
-		_playerLeftController.ClearShell(GameList);
-		_playerRightController.ClearShell(GameList);
+		_playerLeftController.ClearShell(_gameObjects);
+		_playerRightController.ClearShell(_gameObjects);
 	}
 
     public void Draw()
 	{
-		GameList.Draw();
+		_gameObjects.Draw();
 	}
 	
 	public void Deactivate()
 	{
-		GameList.Dispose();
+		_gameObjects.Dispose();
 	}
 }
