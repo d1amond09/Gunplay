@@ -17,9 +17,13 @@ namespace Gunplay;
 
 public partial class MainWindow : Window
 {
-	public MainWindow()
+    public int LeftPlayerPoints { get; set; }
+    public int RightPlayerPoints { get; set; }
+    public MainWindow()
 	{
 		InitializeComponent();
+		LeftPlayerPoints = 0;
+		RightPlayerPoints = 0;
 	}
 
 	private void PlayButton_Click(object sender, RoutedEventArgs e)

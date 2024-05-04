@@ -52,7 +52,7 @@ namespace Gunplay.View
 							   new(@"Images/fastShell.png", "Быстрый", 2), 
 							   new(@"Images/basicShell.png", "Обычный", 0)]);
 
-			_points = 10;
+			_points = 6;
 			_damage = 0;
 			_reloadSpeed = 0;
 			pointsLeftLabel.Content = _points;
@@ -62,22 +62,19 @@ namespace Gunplay.View
 
 		private void StartButton_Click(object sender, RoutedEventArgs e)
 		{
-			ShellFactory leftPlayerShellFactory;
-			switch(labelLeftShell.Content)
+			int damageCount = int.Parse(damageLeftLabel.Content.ToString());
+			int reloadSpeedCount = int.Parse(reloadSpeedLeftLabel.Content.ToString());
+
+			ShellFactory leftPlayerShellFactory = labelLeftShell.Content switch
 			{
-				case "Обычный":
-					leftPlayerShellFactory = new BasicShellFactory();
-					break;
-				case "Быстрый":
-					leftPlayerShellFactory = new FastShellFactory();
-					break;
-				case "Заморозка":
-					leftPlayerShellFactory = new BasicShellFactory();
-					break;
-				default:
-					leftPlayerShellFactory = new BasicShellFactory();
-					break;
-			}
+				"Обычный" => new BasicShellFactory(damageCount, reloadSpeedCount),
+				"Быстрый" => new FastShellFactory(),
+				"Заморозка" => new FreezeShellFactory(),
+				_ => new BasicShellFactory(damageCount, reloadSpeedCount),
+			};
+
+
+
 			GameScene game = new(GameWindowSettings.Default, NWSettings, Menu, leftPlayerShellFactory, leftPlayerShellFactory);
 			game.Run();
 		}

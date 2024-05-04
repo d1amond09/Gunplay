@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Gunplay.DAL;
-using Gunplay.DAL.Interfaces;
+using Gunplay.DAL.Repositories;
 using Gunplay.Domain.Buffers;
 using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Base;
@@ -16,12 +16,12 @@ namespace Gunplay.BLL.Controllers;
 
 public class PlayerController
 {
-	private readonly IFactory<Player> _playerFactory;
+	private readonly Factory<Player> _playerFactory;
 	private readonly ShellFactory _shellFactory;
 
 	public Player Player { get; private set; }
 
-	public PlayerController(IFactory<Player> playerFactory, ShellFactory shellFactory)
+	public PlayerController(Factory<Player> playerFactory, ShellFactory shellFactory)
 	{
 		_shellFactory = shellFactory;	
 		_playerFactory = playerFactory;
@@ -44,15 +44,16 @@ public class PlayerController
 			Player.Canoon.Rotate(-time);
 	}
 
-	public BasicShell? Fire(Direction direction)
+	public Shell? Fire(Direction direction)
 	{
-		BasicShell shell = _shellFactory.Create(Player);
-		float k = 0;
+		Shell shell = _shellFactory.Create(Player);
+		float koefDirection = 0;
 		if (direction == Direction.Left)
-			k = -1;
+			koefDirection = -1;
 		if (direction == Direction.Right)
-			k = 1;
-		if (Player.Fire(k))
+			koefDirection = 1;
+
+		if (Player.Fire(koefDirection))
 			return shell;
 		return null;
 	}
@@ -66,13 +67,22 @@ public class PlayerController
 
 	public bool HitTo(Player player)
 	{
-		foreach(BasicShell shell in Player.Canoon.Shells)
+		foreach(Shell shell in Player.Canoon.Shells)
 		{
 			if(shell.Rectangle.IsColliding(player.Chassis.Rectangle))
 			{
 				shell.IsAlive = false;
 				player.Health -= shell.Damage;
-				player.ChangeTexture();
+				if(shell is FreezeShell freezeShell)
+				{
+					player.Speed *= freezeShell.FreezeSpeed;
+					player.ChangeTexture(true);
+				}
+				else
+				{
+					player.ChangeTexture();
+				}
+
 				return true;
 			}
 		}
@@ -86,8 +96,8 @@ public class PlayerController
 
 	public void ClearShell(GameObjectList<GameObject> gameList)
 	{
-		List<BasicShell> shellsToDelete = [];
-		foreach (BasicShell shll in Player.Canoon.Shells)
+		List<Shell> shellsToDelete = [];
+		foreach (Shell shll in Player.Canoon.Shells)
 		{
 			if (!shll.IsAlive)
 			{
@@ -96,7 +106,7 @@ public class PlayerController
 				
 			}
 		}
-		foreach(BasicShell shll in shellsToDelete)
+		foreach(Shell shll in shellsToDelete)
 		{
 			Player.Canoon.Shells.Remove(shll);
 		}

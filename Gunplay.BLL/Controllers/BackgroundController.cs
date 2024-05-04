@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.DAL.Interfaces;
+﻿using Gunplay.DAL.Repositories;
 using Gunplay.Domain.Models;
 
 namespace Gunplay.BLL.Controllers;
 
 public class BackgroundController
 {
-	private readonly IFactory<Background> _backgroundFactory;
+	private readonly Factory<Background> _backgroundFactory;
 
 	public Background Background { get; private set; }
 
-	public BackgroundController(IFactory<Background> backgroundFactory)
+	public BackgroundController(Factory<Background> backgroundFactory)
     {
 		_backgroundFactory = backgroundFactory;
 		Background = _backgroundFactory.Create();

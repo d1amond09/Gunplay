@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Models.Base;
+﻿using Gunplay.Domain.Models.Base;
 
-namespace Gunplay.Domain;
+namespace Gunplay.Domain.Extensions;
 
-public static class Extensions
+public static class CoordinateExtension
 {
 	public static void UpdateCoords(this float[] coords, List<Vertex> vertices)
 	{

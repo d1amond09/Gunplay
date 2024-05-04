@@ -46,7 +46,7 @@ public class ArrayObjectCollection : IEnumerable
 			if(item.Id == arrayObject.Id)
 			{
 				_arrayObjects.Remove(item);
-				//item.Dispose();
+				item.Dispose();
 				return;
 			}
 		}

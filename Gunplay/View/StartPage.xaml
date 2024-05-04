@@ -43,7 +43,7 @@
                 <Label Grid.Row="2" Grid.Column="0" Content="Скорость Перезарядки:" Style="{StaticResource label}"/>
                 <Label Grid.Row="3" Grid.Column="0" Content="Тип снаряда:" Style="{StaticResource label}"/>
 
-                <Image x:Name="leftShell" Grid.Row="3" Grid.Column="2" Source="/View/Images/freezeShell.png" />
+                <Image x:Name="leftShell" Grid.Row="3" Grid.Column="2" Source="/View/Images/basicShell.png" />
                 <Label x:Name="labelLeftShell" Grid.Row="3" Grid.Column="2" Margin="0 0 0 -25" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="32" Content="Обычный" Style="{StaticResource label}" />
 
 

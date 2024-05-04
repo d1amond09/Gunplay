@@ -12,10 +12,10 @@ using System.Windows.Documents;
 using Gunplay.Domain.Models;
 using Gunplay.BLL;
 using Gunplay.DAL;
-using Gunplay.DAL.Interfaces;
 using Gunplay.Domain.Models.Shells;
 using Gunplay.BLL.Controllers;
 using System.ComponentModel;
+using Gunplay.DAL.Repositories;
 
 namespace Gunplay;
 
@@ -35,13 +35,13 @@ public class GameScene : GameWindow
 		UpdateTime = 100;
 		//UpdateFrequency = 144;
 
-		IFactory<Background> backgroundRepository = new BackgroundFactory();
+		Factory<Background> backgroundRepository = new BackgroundFactory();
 		BackgroundController backgroundController = new(backgroundRepository);
 
-		IFactory<Player> playerLeftRepository = new PlayerLeftFactory();
+		Factory<Player> playerLeftRepository = new PlayerLeftFactory();
 		PlayerController playerLeftController = new(playerLeftRepository, leftPlayerShellFactory);
 
-		IFactory<Player> playerRightRepository = new PlayerRightFactory();
+		Factory<Player> playerRightRepository = new PlayerRightFactory();
 		PlayerController playerRightController = new(playerRightRepository, rightPlayerShellFactory);
 
 		_gameController = new(backgroundController, playerLeftController, playerRightController);

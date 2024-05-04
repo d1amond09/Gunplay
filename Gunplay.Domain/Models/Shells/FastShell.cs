@@ -1,12 +1,10 @@
-﻿namespace Gunplay.Domain.Models.Shells;
+﻿using Gunplay.Domain.Textures;
 
-public class FastShell : BasicShell
+namespace Gunplay.Domain.Models.Shells;
+
+public class FastShell(Rectangle rectangle, Texture texture) : BasicShell(rectangle, texture)
 {
-	public float Speed { get; set; }
-	public FastShell(Rectangle rectangle, string textureFilePath) : base(rectangle, textureFilePath)
-	{
-		Speed = 1.6f;
-	}
+	public float Speed { get; set; } = 1.6f;
 
 	public override void Fly(float time)
 	{

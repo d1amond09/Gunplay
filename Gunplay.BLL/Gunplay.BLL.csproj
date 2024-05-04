@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda</Configurations>
+    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda;dfsdfsdf</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

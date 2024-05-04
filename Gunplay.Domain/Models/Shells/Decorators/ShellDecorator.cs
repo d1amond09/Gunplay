@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gunplay.Domain.Textures;
 
 namespace Gunplay.Domain.Models.Shells;
 
-public abstract class ShellDecorator : IShell
+public abstract class ShellDecorator : Shell
 {
-	private IShell _shell;
+	protected Shell _shell;
 
-	public float Damage { get; set; }
-	public float ReloadSpeed { get; set; }
-
-	public ShellDecorator(IShell shell) 
+	public ShellDecorator(Shell shell) : base(shell.Rectangle, shell.Texture)
 	{ 
 		_shell = shell;
-		_shell.Damage = Damage;
-		_shell.ReloadSpeed = ReloadSpeed;
+		Damage = _shell.Damage;
+		ReloadSpeed = _shell.ReloadSpeed;
+		Rectangle = _shell.Rectangle;
+		Texture = _shell.Texture;
 	}
 }

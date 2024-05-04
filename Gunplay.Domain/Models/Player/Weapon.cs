@@ -7,28 +7,20 @@ using Gunplay.Domain.Models.Shells;
 
 namespace Gunplay.Domain.Models
 {
-	public class Weapon
+	public class Weapon(Bolt bolt, Muzzle muzzle)
 	{
 		private readonly float _deltaAngle = 20f;
 		private float angleInDegrees = 0;
-        public Bolt Bolt { get; set; }
+		public Bolt Bolt { get; set; } = bolt;
 
-        public Muzzle Muzzle { get; set; }
+		public Muzzle Muzzle { get; set; } = muzzle;
 
-		public List<BasicShell> Shells { get; set; }
-
-		public Weapon(Bolt bolt, Muzzle muzzle)
-        {
-            Bolt = bolt;
-            Muzzle = muzzle;
-			Shells = [];
-        }
+		public List<Shell> Shells { get; set; } = [];
 
 		public bool Fire(float speedX, float speedY, float time)
 		{
 			if (Shells.Count > 0)
 			{
-				Bolt.Fire();
 				var shll = Shells.Last();
 				if(time >= shll.ReloadSpeed)
 					return shll.FlyStart(speedX, speedY, angleInDegrees);

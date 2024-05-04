@@ -9,7 +9,7 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Gunplay.Domain.Models.Shells;
 
-public class BasicShell : GameObject, IShell
+public class BasicShell : Shell
 {
 	private float _angle;
 	private float _angleFly;
@@ -18,36 +18,18 @@ public class BasicShell : GameObject, IShell
 	private float _time;
 
 	private Rectangle _startRectangle;
-	public Rectangle Rectangle { get; set; }
 
-	public Texture Texture { get; set; }
-
-	public BasicShell(Rectangle rectangle, string textureFilePath)
+	public BasicShell(Rectangle rectangle, Texture texture) : base(rectangle, texture)
 	{
-		IsAlive = true;
-		Damage = 1;
-		ReloadSpeed = 1f;
 		_angle = 0;
 		_angleFly = 0;
 		_speedX = 0;
 		_speedY = 0;
 		_time = 0;
-		Rectangle = rectangle;
 		_startRectangle = Rectangle;
-		Texture = Texture.LoadFromFile(textureFilePath);
-
-		ArrayBuffer = new(Rectangle.Coordinates, BufferUsageHint.StaticDraw);
-		ElementBuffer rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
-
-		ArrayObject = new ArrayObject(ArrayBuffer, rctngl, Texture);
 	}
 
-	public float Damage { get; set; }
-	public float ReloadSpeed { get; set; }
-
-    public bool IsAlive { get; set; }
-
-    public bool FlyStart(float speedX, float speedY, float angle)
+    public override bool FlyStart(float speedX, float speedY, float angle)
     {
 		_speedX = speedX;
 		_speedY = speedY;
@@ -59,7 +41,7 @@ public class BasicShell : GameObject, IShell
 		return true;
 	}
 
-	public virtual void Fly(float time)
+	public override void Fly(float time)
 	{
 		var t = Math.Abs(time);
 		if(IsAlive)

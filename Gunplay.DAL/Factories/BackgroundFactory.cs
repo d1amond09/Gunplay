@@ -1,8 +1,8 @@
-﻿using Gunplay.DAL.Interfaces;
-using Gunplay.DAL.Repositories;
+﻿using Gunplay.DAL.Repositories;
 using Gunplay.Domain;
 using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Base;
+using Gunplay.Domain.Textures;
 namespace Gunplay.DAL;
 
 public class BackgroundFactory : Factory<Background>
@@ -17,6 +17,7 @@ public class BackgroundFactory : Factory<Background>
 
 	public override Background Create()
 	{
-		return new Background(_backgroungRctngl, @"data\img\Background.png");
+		Texture texture = Texture.LoadFromFile(@"data\img\Background.png");
+		return new Background(_backgroungRctngl, texture);
 	}
 }

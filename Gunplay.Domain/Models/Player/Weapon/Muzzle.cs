@@ -9,23 +9,8 @@ using OpenTK.Graphics.OpenGL;
 
 namespace Gunplay.Domain.Models
 {
-	public class Muzzle : GameObject
+	public class Muzzle(Rectangle rectangle, Texture texture) : GameObject(rectangle, texture)
 	{
-		public Rectangle Rectangle { get; set; }
-
-		public Texture Texture { get; set; }
-
-		public Muzzle(Rectangle rectangle, string textureFilePath)
-		{
-			Rectangle = rectangle;
-			Texture = Texture.LoadFromFile(textureFilePath);
-
-			ArrayBuffer = new(Rectangle.Coordinates, BufferUsageHint.StaticDraw);
-			ElementBuffer rctngl = new([0, 1, 2, 2, 1, 3], BufferUsageHint.StaticDraw);
-
-			ArrayObject = new ArrayObject(ArrayBuffer, rctngl, Texture);
-		}
-
 		public void Move(float step)
 		{
 			Rectangle.MoveX(step);

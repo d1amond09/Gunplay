@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda</Configurations>
+    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda;dfsdfsdf</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +13,9 @@
 
   <ItemGroup>
     <None Update="data\img\Background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\img\playerleft_down-2-freeze.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="data\img\playerleft_down-2.png">
@@ -48,6 +51,10 @@
     <None Update="data\shaders\shader_base.vert">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>

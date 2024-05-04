@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gunplay.Domain.Extensions;
 using Gunplay.Domain.Interfaces;
 using Gunplay.Domain.Models.Base;
 
@@ -95,7 +96,7 @@ public class Rectangle : Polygon
 			float vX = speedX * (float)Math.Cos(angle * (float)Math.PI / 180.0f);
 			float newX = startRectangle.Coordinates[i] + vX * time;
 			float newY = startRectangle.Coordinates[i + 1] + speedY * (float)Math.Sin(angle * (float)Math.PI / 180.0f) * time - (9.8f * 0.5f * time * time) * updateTime;
-			if (newX > 1f || newX < -1f || newY > 1f || newY < -1f)
+			if (newX > 1.2f || newX < -1.2f || newY > 1.2f || newY < -1.2f)
 			{
 				return false;
 			}

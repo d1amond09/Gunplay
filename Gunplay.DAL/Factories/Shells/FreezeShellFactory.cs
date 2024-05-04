@@ -5,18 +5,18 @@ using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
 namespace Gunplay.DAL;
 
-public class FastShellFactory : ShellFactory
+public class FreezeShellFactory : ShellFactory
 {
-	public FastShellFactory()
+	public FreezeShellFactory()
 	{
 
 	}
 
-	public override FastShell Create(Player player)
+	public override FreezeShell Create(Player player)
 	{
 		Rectangle basicShellRctngl = new([.. player.Canoon.Bolt.Rectangle.Coordinates]);
 		Texture texture = Texture.LoadFromFile(@"data\img\shell.png");
-		FastShell shell = new(basicShellRctngl, texture);
+		FreezeShell shell = new(basicShellRctngl, texture);
 		player.Canoon.Shells.Add(shell);
 		return shell;
 	}

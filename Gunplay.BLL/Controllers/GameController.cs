@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Gunplay.BLL.Controllers;
 using Gunplay.DAL;
-using Gunplay.DAL.Interfaces;
 using Gunplay.Domain.Buffers;
 using Gunplay.Domain.Models;
 using Gunplay.Domain.Models.Base;
@@ -25,9 +24,11 @@ public class GameController
 	private readonly PlayerController _playerLeftController;
 	private readonly PlayerController _playerRightController;
 	private readonly Polygon Stone;
+
     public GameObjectList<GameObject> GameList { get; set; }
 
-    public GameController(BackgroundController backgroundController, PlayerController playerLeftController, 
+    public GameController(BackgroundController backgroundController, 
+						  PlayerController playerLeftController, 
 						  PlayerController playerRightController)
     {
 		_backgroundController = backgroundController;
@@ -58,13 +59,12 @@ public class GameController
 		_playerLeftController.Update(time);
 		_playerRightController.Update(time);
 
-		//Debug.WriteLine(_playerLeftController.Player.Canoon.Shells.Count);
-
 		_playerLeftController.TouchWithStone(Stone);
 		_playerRightController.TouchWithStone(Stone);
 
 		if(_playerRightController.HitTo(_playerLeftController.Player))
 			GameList.Add(_playerLeftController.Player.Chassis);
+
 		if(_playerLeftController.HitTo(_playerRightController.Player))
 			GameList.Add(_playerRightController.Player.Chassis);
 

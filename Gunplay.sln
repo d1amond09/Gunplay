@@ -15,6 +15,7 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		adsda|Any CPU = adsda|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		dfsdfsdf|Any CPU = dfsdfsdf|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -22,24 +23,32 @@ Global
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.adsda|Any CPU.Build.0 = adsda|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.dfsdfsdf|Any CPU.ActiveCfg = dfsdfsdf|Any CPU
+		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.dfsdfsdf|Any CPU.Build.0 = dfsdfsdf|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E0A3F84-89AD-4B00-932D-74DB9F513A7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.adsda|Any CPU.ActiveCfg = adsda|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.adsda|Any CPU.Build.0 = adsda|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755CC221-73C3-4188-8011-E055792DE435}.dfsdfsdf|Any CPU.ActiveCfg = dfsdfsdf|Any CPU
+		{755CC221-73C3-4188-8011-E055792DE435}.dfsdfsdf|Any CPU.Build.0 = dfsdfsdf|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{755CC221-73C3-4188-8011-E055792DE435}.Release|Any CPU.Build.0 = Release|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.adsda|Any CPU.ActiveCfg = adsda|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.adsda|Any CPU.Build.0 = adsda|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.dfsdfsdf|Any CPU.ActiveCfg = dfsdfsdf|Any CPU
+		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.dfsdfsdf|Any CPU.Build.0 = dfsdfsdf|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{254DDCB1-3DB3-47CF-8E6B-C1AB4767D944}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.adsda|Any CPU.ActiveCfg = adsda|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.adsda|Any CPU.Build.0 = adsda|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.dfsdfsdf|Any CPU.ActiveCfg = dfsdfsdf|Any CPU
+		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.dfsdfsdf|Any CPU.Build.0 = dfsdfsdf|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E632D84-EBDB-44A9-A4A9-918111E3DA89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
