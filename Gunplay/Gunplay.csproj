@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda;dfsdfsdf</Configurations>
+    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda;dfsdfsdf;hbhb</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

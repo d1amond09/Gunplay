@@ -1,7 +1,7 @@
 ﻿using Gunplay.DAL.Repositories;
 using Gunplay.Domain;
 using Gunplay.Domain.Models;
-using Gunplay.Domain.Models.Base;
+using Gunplay.Domain.Models.Geometry;
 using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
 namespace Gunplay.DAL;

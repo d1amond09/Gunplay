@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Models.Base;
+﻿using Gunplay.Domain.Models.Geometry;
 
 namespace Gunplay.Domain.Interfaces;
 
 public interface IFigure
 {
-	public List<Vertex> Vertices { get; set; }
+	public List<Vertex> Vertices { get; }
 }

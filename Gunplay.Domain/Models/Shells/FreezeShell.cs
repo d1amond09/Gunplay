@@ -7,7 +7,8 @@ using Gunplay.Domain.Textures;
 
 namespace Gunplay.Domain.Models.Shells;
 
-public class FreezeShell(Rectangle rectangle, Texture texture) : BasicShell(rectangle, texture)
+public class FreezeShell(Shell shell) : Shell(shell)
 {
 	public float FreezeSpeed { get; set; } = 0.8f;
+
 }

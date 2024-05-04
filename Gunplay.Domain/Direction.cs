@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gunplay.BLL;
+namespace Gunplay.Domain;
 
 public enum Direction
 {

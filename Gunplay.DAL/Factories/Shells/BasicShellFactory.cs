@@ -4,31 +4,14 @@ using Gunplay.Domain.Textures;
 
 namespace Gunplay.DAL.Repositories;
 
-public class BasicShellFactory(int damageCount, int reloadSpeedCount) : ShellFactory
+public class BasicShellFactory(int damageCount, int reloadSpeedCount) : ShellFactory(damageCount, reloadSpeedCount)
 {
-	private readonly int _damageCount = damageCount;
-	private readonly int _reloadSpeedCount = reloadSpeedCount;
+	protected override string TexturePath => @"data\img\shell.png";
 
 	public override Shell Create(Player player)
 	{
-		Rectangle basicShellRctngl = new([.. player.Canoon.Bolt.Rectangle.Coordinates]);
-		Texture texture = Texture.LoadFromFile(@"data\img\shell.png");
-		BasicShell shell = new(basicShellRctngl, texture);
-
-		ShellDamageDecorator shellDamage = new(shell);
-		for (int i = 0; i < _damageCount; i++)
-		{
-			shellDamage = new ShellDamageDecorator(shellDamage);
-		}
-
-		ShellSpeedDecorator shellReloadSpeed = new(shellDamage);
-		for (int i = 0; i < _reloadSpeedCount; i++)
-		{
-			shellReloadSpeed = new ShellSpeedDecorator(shellReloadSpeed);
-		}
-
-
-		player.Canoon.Shells.Add(shellReloadSpeed);
-		return shellReloadSpeed;
+		Shell shell = base.Create(player);
+		player.Canoon.Shells.Add(shell);
+		return shell;
 	}
 }

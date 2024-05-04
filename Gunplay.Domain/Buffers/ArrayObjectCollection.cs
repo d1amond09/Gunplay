@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 using OpenTK.Graphics.OpenGL;
 using Gunplay.Domain.Textures;
 
@@ -13,11 +7,9 @@ namespace Gunplay.Domain.Buffers;
 public class ArrayObjectCollection : IEnumerable
 {
 	private readonly List<ArrayObject> _arrayObjects;
-	
 	private readonly ShaderProgram _shaderProgram;
 	
 	public int Count => _arrayObjects.Count;
-
 	public int VertexIndex => _shaderProgram.GetLocation("aPosition");
 	public int TextureIndex => _shaderProgram.GetLocation("aTexture");
 
@@ -46,7 +38,7 @@ public class ArrayObjectCollection : IEnumerable
 			if(item.Id == arrayObject.Id)
 			{
 				_arrayObjects.Remove(item);
-				item.Dispose();
+				//item.Dispose();
 				return;
 			}
 		}

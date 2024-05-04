@@ -1,25 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL;
 
 namespace Gunplay.Domain.Buffers;
 
-public class ElementBuffer : BufferObject<uint>
+public class ElementBuffer(uint[] data, BufferUsageHint hint) : BufferObject<uint>(data, hint)
 {
-    public override uint[] Data { get; set; }
-
-    public ElementBuffer(uint[] data, BufferUsageHint hint)
-	{
-		Id = GL.GenBuffer();
-		Data = data;
-
-		SetType(hint);
-	}
-
 	public override void Activate()
 	{
 		IsActive = true;

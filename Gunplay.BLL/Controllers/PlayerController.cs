@@ -7,7 +7,8 @@ using Gunplay.DAL;
 using Gunplay.DAL.Repositories;
 using Gunplay.Domain.Buffers;
 using Gunplay.Domain.Models;
-using Gunplay.Domain.Models.Base;
+using Gunplay.Domain;
+using Gunplay.Domain.Models.Geometry;
 using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
 using OpenTK.Graphics.OpenGL;
@@ -47,13 +48,8 @@ public class PlayerController
 	public Shell? Fire(Direction direction)
 	{
 		Shell shell = _shellFactory.Create(Player);
-		float koefDirection = 0;
-		if (direction == Direction.Left)
-			koefDirection = -1;
-		if (direction == Direction.Right)
-			koefDirection = 1;
 
-		if (Player.Fire(koefDirection))
+		if (Player.Fire(direction))
 			return shell;
 		return null;
 	}

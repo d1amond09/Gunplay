@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Buffers;
-using Gunplay.Domain.Textures;
-using OpenTK.Graphics.OpenGL;
+﻿using Gunplay.Domain.Textures;
+using Gunplay.Domain.Models.Geometry;
 
-namespace Gunplay.Domain.Models
+namespace Gunplay.Domain.Models;
+
+public class Muzzle(Rectangle rectangle, Texture texture) 
+		   : GameObject(rectangle, texture)
 {
-	public class Muzzle(Rectangle rectangle, Texture texture) : GameObject(rectangle, texture)
-	{
-		public void Move(float step)
-		{
-			Rectangle.MoveX(step);
-		}
+	public void Move(float step)
+		=> Rectangle.MoveX(step);
 
-		public void Rotate(float angle)
-		{
-			Rectangle.Rotate(angle);
-		}
-	}
+	public void Rotate(float angle)
+		=> Rectangle.Rotate(angle);
 }

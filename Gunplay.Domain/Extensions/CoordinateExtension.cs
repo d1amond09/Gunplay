@@ -1,4 +1,4 @@
-﻿using Gunplay.Domain.Models.Base;
+﻿using Gunplay.Domain.Models.Geometry;
 
 namespace Gunplay.Domain.Extensions;
 

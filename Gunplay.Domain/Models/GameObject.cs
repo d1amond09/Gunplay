@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Buffers;
+﻿using Gunplay.Domain.Buffers;
 using Gunplay.Domain.Textures;
 using OpenTK.Graphics.OpenGL;
+using Gunplay.Domain.Models.Geometry;
 
 namespace Gunplay.Domain.Models;
 

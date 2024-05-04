@@ -17,9 +17,6 @@ namespace Gunplay.Domain.Models
 						Texture textureMidHealthFreeze)
 	{
 		private const float _speed = 0.1f;
-		private const float _speedX = 2.2f;
-		private const float _speedY = 6.3f;
-		private float _direction = 0f;
 
 		private readonly Texture _textureMidHealth = textureMidHealth;
 		private readonly Texture _textureMidHealthFreeze = textureMidHealthFreeze;
@@ -38,19 +35,21 @@ namespace Gunplay.Domain.Models
 		public List<GameObject> GetObjects() 
 			=> [Canoon.Bolt, Canoon.Muzzle, Chassis];
 
-		public bool Fire(float k)
+		public bool Fire(Direction direction)
 		{
-			_direction = k;
-			var t = Canoon.Fire(_speedX * _direction, _speedY * _direction, Time);
-			Time = t ? 0 : Time;
-			return t;
+			if(Canoon.Fire(direction, Time))
+			{
+				Time = 0;
+				return true;
+			}
+			return false;
 		}
 
 		public void Update(float time)
 		{
 			Chassis.Update();
-			Canoon.Update(time * _direction);
-			Time += Math.Abs(time);
+			Canoon.Update(time);
+			Time += time;
 		}
 
 		public void Move(float time)

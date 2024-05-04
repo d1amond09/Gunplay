@@ -2,12 +2,12 @@
 
 namespace Gunplay.Domain.Models.Shells;
 
-public class FastShell(Rectangle rectangle, Texture texture) : BasicShell(rectangle, texture)
+public class FastShell(Shell shell) : Shell(shell)
 {
-	public float Speed { get; set; } = 1.6f;
+	private const float SPEED = 1.6f;
 
 	public override void Fly(float time)
 	{
-		base.Fly(time * Speed);
+		base.Fly(time * SPEED);
 	}
 }

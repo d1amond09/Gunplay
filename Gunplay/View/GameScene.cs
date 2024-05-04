@@ -108,9 +108,9 @@ public class GameScene : GameWindow
 		GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
 		_gameController.Draw();
-		SwapBuffers();
 		
 		base.OnRenderFrame(e);
+		SwapBuffers();
 	}
 
 

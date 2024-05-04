@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Textures;
-
-namespace Gunplay.Domain.Models.Shells;
+﻿namespace Gunplay.Domain.Models.Shells;
 
 public abstract class ShellDecorator : Shell
 {
@@ -18,5 +11,14 @@ public abstract class ShellDecorator : Shell
 		ReloadSpeed = _shell.ReloadSpeed;
 		Rectangle = _shell.Rectangle;
 		Texture = _shell.Texture;
+	}
+	public override void Fly(float time)
+	{
+		_shell.Fly(time);
+	}
+
+	public override bool FlyStart(Direction dir, float angle)
+	{
+		return _shell.FlyStart(dir, angle);
 	}
 }

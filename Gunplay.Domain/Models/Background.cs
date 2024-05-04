@@ -1,4 +1,5 @@
 ﻿using Gunplay.Domain.Textures;
+using Gunplay.Domain.Models.Geometry;
 
 namespace Gunplay.Domain.Models;
 

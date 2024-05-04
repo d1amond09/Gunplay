@@ -4,8 +4,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda;dfsdfsdf</Configurations>
+    <Configurations>Debug;Release;qq;ivan;dfsdf;dfsdfs;hello;ugfygyi;вапвыкп;adsda;dfsdfsdf;hbhb</Configurations>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\**" />
+    <EmbeddedResource Remove="Interfaces\**" />
+    <None Remove="Interfaces\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Gunplay.Domain\Gunplay.Domain.csproj" />
@@ -51,10 +57,6 @@
     <None Update="data\shaders\shader_base.vert">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
   </ItemGroup>
 
 </Project>

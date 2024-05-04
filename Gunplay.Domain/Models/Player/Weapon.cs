@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Models.Shells;
+﻿using Gunplay.Domain.Models.Shells;
 
 namespace Gunplay.Domain.Models
 {
 	public class Weapon(Bolt bolt, Muzzle muzzle)
 	{
-		private readonly float _deltaAngle = 20f;
+		private const float DELTA_ANGLE = 20f;
+
 		private float angleInDegrees = 0;
-		public Bolt Bolt { get; set; } = bolt;
 
-		public Muzzle Muzzle { get; set; } = muzzle;
+		public Bolt Bolt => bolt;
+		public Muzzle Muzzle => muzzle;
+		public List<Shell> Shells { get; private set; } = [];
 
-		public List<Shell> Shells { get; set; } = [];
-
-		public bool Fire(float speedX, float speedY, float time)
+		public bool Fire(Direction direction, float time)
 		{
 			if (Shells.Count > 0)
 			{
 				var shll = Shells.Last();
 				if(time >= shll.ReloadSpeed)
-					return shll.FlyStart(speedX, speedY, angleInDegrees);
+					return shll.FlyStart(direction, angleInDegrees);
 			}
 			return false;
 		}
@@ -46,7 +41,7 @@ namespace Gunplay.Domain.Models
 		{
 			const float maxAngle = 85.0f;
 			const float minAngle = 10.0f;
-			float angle = _deltaAngle * time;
+			float angle = DELTA_ANGLE * time;
 
 			if (Math.Abs(angleInDegrees + angle) >= minAngle && Math.Abs(angleInDegrees + angle) < maxAngle)
 			{

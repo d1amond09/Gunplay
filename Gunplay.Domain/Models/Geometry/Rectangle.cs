@@ -1,34 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gunplay.Domain.Extensions;
-using Gunplay.Domain.Interfaces;
-using Gunplay.Domain.Models.Base;
+﻿using Gunplay.Domain.Extensions;
 
-namespace Gunplay.Domain.Models;
+namespace Gunplay.Domain.Models.Geometry;
 
 public class Rectangle : Polygon
 {
-	public float Width => Vertices[0].X - Vertices[1].X;
+	public float[] Coordinates { get; protected set; }
 
-	public float Height => Vertices[0].Y - Vertices[2].Y;
-
-	public float[] Coordinates { get; set; }
-
-	public Rectangle(params Vertex[] vertices)
+	public Rectangle(params Vertex[] vertices) : base(vertices)
 	{
-		Vertices = [.. vertices];
 		Coordinates = Vertices.ToCoordinates();
 	}
 
 	public Rectangle(float[] coordinates) 
 	{
-		Vertices = [new Vertex(coordinates[0], coordinates[1]),
-					 new Vertex(coordinates[5], coordinates[6]),
-					 new Vertex(coordinates[10], coordinates[11]),
-					 new Vertex(coordinates[15], coordinates[16])];
+		Vertices = [new Vertex(coordinates[0],  coordinates[1]),
+					new Vertex(coordinates[5],  coordinates[6]),
+					new Vertex(coordinates[10], coordinates[11]),
+					new Vertex(coordinates[15], coordinates[16])];
 		Coordinates = coordinates;
 	}
 
@@ -58,8 +46,11 @@ public class Rectangle : Polygon
 			float translatedX = x - Vertices.First().X;
 			float translatedY = y - Vertices.First().Y;
 
-			float newX = translatedX * (float)Math.Cos(angle / K) - translatedY * (float)Math.Sin(angle / K);
-			float newY = translatedX * (float)Math.Sin(angle * K) + translatedY * (float)Math.Cos(angle * K);
+			float newX = translatedX * (float)Math.Cos(angle / K) - 
+						 translatedY * (float)Math.Sin(angle / K);
+
+			float newY = translatedX * (float)Math.Sin(angle * K) + 
+						 translatedY * (float)Math.Cos(angle * K);
 
 			vertex.X = newX + Vertices.First().X;
 			vertex.Y = newY + Vertices.First().Y;
@@ -93,9 +84,9 @@ public class Rectangle : Polygon
 	{
 		for (int i = 0; i < Coordinates.Length; i += 5)
 		{
-			float vX = speedX * (float)Math.Cos(angle * (float)Math.PI / 180.0f);
+			float vX = speedX * updateTime * (float)Math.Cos(angle * (float)Math.PI / 180.0f);
 			float newX = startRectangle.Coordinates[i] + vX * time;
-			float newY = startRectangle.Coordinates[i + 1] + speedY * (float)Math.Sin(angle * (float)Math.PI / 180.0f) * time - (9.8f * 0.5f * time * time) * updateTime;
+			float newY = startRectangle.Coordinates[i + 1] + (speedY * (float)Math.Sin(angle * (float)Math.PI / 180.0f) * time - (9.8f * 0.5f * time * time)) * updateTime;
 			if (newX > 1.2f || newX < -1.2f || newY > 1.2f || newY < -1.2f)
 			{
 				return false;

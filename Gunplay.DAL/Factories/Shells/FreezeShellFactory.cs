@@ -5,19 +5,15 @@ using Gunplay.Domain.Models.Shells;
 using Gunplay.Domain.Textures;
 namespace Gunplay.DAL;
 
-public class FreezeShellFactory : ShellFactory
+public class FreezeShellFactory(int damageCount, int reloadSpeedCount) : ShellFactory(damageCount, reloadSpeedCount)
 {
-	public FreezeShellFactory()
-	{
-
-	}
-
+	protected override string TexturePath => @"data\img\shell.png";
 	public override FreezeShell Create(Player player)
 	{
-		Rectangle basicShellRctngl = new([.. player.Canoon.Bolt.Rectangle.Coordinates]);
-		Texture texture = Texture.LoadFromFile(@"data\img\shell.png");
-		FreezeShell shell = new(basicShellRctngl, texture);
-		player.Canoon.Shells.Add(shell);
-		return shell;
+	
+		Shell shell = base.Create(player);
+		FreezeShell shll = new(shell);
+		player.Canoon.Shells.Add(shll);
+		return shll;
 	}
 }

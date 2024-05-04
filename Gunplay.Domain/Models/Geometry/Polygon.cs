@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Runtime.Serialization.Formatters;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Numerics;
 using Gunplay.Domain.Interfaces;
 
-namespace Gunplay.Domain.Models.Base;
+namespace Gunplay.Domain.Models.Geometry;
 
-public class Polygon : IFigure
+public class Polygon(params Vertex[] vertices) : IFigure
 {
-	public List<Vertex> Vertices { get; set; }
-
-	public Polygon(params Vertex[] vertices)
-    {
-		Vertices = [.. vertices];
-    }
+	public List<Vertex> Vertices { get; protected set; } = [.. vertices];
 
 	public bool IsColliding(Polygon polygon)
 	{
