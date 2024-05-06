@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Gunplay.Creation.Factories.BackgroundFactory" Collapsed="true">
+    <Position X="4.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.Factory&lt;TEntity&gt;" Collapsed="true">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.PlayerLeftFactory" Collapsed="true">
+    <Position X="2.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.PlayerRightFactory" Collapsed="true">
+    <Position X="7" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.BasicShell" Collapsed="true">
+    <Position X="12" Y="5.25" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.FastShell" Collapsed="true">
+    <Position X="14" Y="5.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.FreezeShell" Collapsed="true">
+    <Position X="15.75" Y="5.25" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.Shell" Collapsed="true">
+    <Position X="14" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.Decorators.ShellDamageDecorator" Collapsed="true">
+    <Position X="12.5" Y="1.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.Decorators.ShellDecorator" Collapsed="true">
+    <Position X="14" Y="2.75" Width="1.5" />
+    <AssociationLine Name="_shell" Type="Gunplay.Domain.Models.Shells.Shell" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="15.5" Y="3.062" />
+        <Point X="16.369" Y="3.062" />
+        <Point X="16.369" Y="4.375" />
+        <Point X="15.5" Y="4.375" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Field Name="_shell" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.Decorators.ShellSpeedDecorator" Collapsed="true">
+    <Position X="15" Y="1.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

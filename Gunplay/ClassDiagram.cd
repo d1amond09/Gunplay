@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Gunplay.Control.Controllers.BackgroundController">
+    <Position X="15.75" Y="8.75" Width="2" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Background" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Gunplay.Control.Controllers.PlayerController">
+    <Position X="3.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Player" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Gunplay.Control.GameController">
+    <Position X="6.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.Shells.BasicShellFactory">
+    <Position X="20" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.Shells.FastShellFactory">
+    <Position X="21.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.Shells.FreezeShellFactory">
+    <Position X="23.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.Shells.ShellFactory">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.BackgroundFactory">
+    <Position X="21.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.Factory&lt;TEntity&gt;" Collapsed="true">
+    <Position X="21.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.PlayerLeftFactory">
+    <Position X="19.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Creation.Factories.PlayerRightFactory">
+    <Position X="23.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Textures.Shader">
+    <Position X="16.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Textures.ShaderProgram">
+    <Position X="16.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Textures.Texture">
+    <Position X="18" Y="6.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Geometry.Polygon">
+    <Position X="18" Y="1.5" Width="1.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Geometry.Rectangle">
+    <Position X="18" Y="3.75" Width="1.5" />
+    <InheritanceLine Type="Gunplay.Domain.Models.Geometry.Polygon" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="18.625" Y="3.247" />
+        <Point X="18.625" Y="3.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Geometry.Vertex">
+    <Position X="23.5" Y="4.25" Width="1.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Bolt">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Muzzle">
+    <Position X="9.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Chassis">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Weapon">
+    <Position X="8.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Bolt" />
+      <Property Name="Muzzle" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Background">
+    <Position X="13.25" Y="8.5" Width="1.5" />
+    <InheritanceLine Type="Gunplay.Domain.Models.GameObject" FixedToPoint="true">
+      <Path>
+        <Point X="11.5" Y="7.459" />
+        <Point X="11.5" Y="7.834" />
+        <Point X="14" Y="7.834" />
+        <Point X="14" Y="8.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.GameObject">
+    <Position X="10.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.GameObjectList&lt;T&gt;">
+    <Position X="8.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Player">
+    <Position X="5.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="Canoon" />
+      <Property Name="Chassis" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.Decorators.ShellDamageDecorator">
+    <Position X="16" Y="12.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.Decorators.ShellDecorator">
+    <Position X="14" Y="11.25" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Field Name="_shell" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.Decorators.ShellSpeedDecorator">
+    <Position X="16" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.BasicShell">
+    <Position X="13.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.FastShell">
+    <Position X="9.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.FreezeShell">
+    <Position X="11.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Models.Shells.Shell">
+    <Position X="11.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Extensions.CoordinateExtension">
+    <Position X="23.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.ArrayBuffer">
+    <Position X="22.5" Y="13" Width="1.5" />
+    <InheritanceLine Type="Gunplay.Domain.Buffers.BufferObject&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="24.75" Y="13.75" />
+        <Point X="24.626" Y="13.75" />
+        <Point X="24.626" Y="13.75" />
+        <Point X="24" Y="13.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.ArrayObject">
+    <Position X="19.75" Y="11" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="ElementBuffer" />
+      <Property Name="ArrayBuffer" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.ArrayObjectCollection">
+    <Position X="17.75" Y="11" Width="1.75" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.BufferObject&lt;T&gt;">
+    <Position X="24.75" Y="12" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Gunplay.Domain.Buffers.ElementBuffer">
+    <Position X="22.5" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Gunplay.GameScene">
+    <Position X="9.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAQAABAAASAAAEACAAAAAAAAAQAAA=</HashCode>
+      <FileName>View\GameScene.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_mainWindow" />
+      <Field Name="_gameController" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Gunplay.View.SettingsPage" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>View\SettingsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Menu" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Gunplay.View.ShellType">
+    <Position X="16.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\ShellType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gunplay.View.StartPage" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgAAAABRgIABAAAAAAAAAIAAAIIEACQQACAIBgMIAE=</HashCode>
+      <FileName>View\StartPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Menu" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Gunplay.MainWindow">
+    <Position X="12.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQBQAAAAAAAAAAQAAAgAQAAAEAABAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Gunplay.Domain.Interfaces.IBuffer" Collapsed="true">
+    <Position X="24.75" Y="11" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="Gunplay.Domain.Interfaces.IFigure">
+    <Position X="20" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
